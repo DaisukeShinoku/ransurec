@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_02_135956) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_09_145544) do
+  create_table "events", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "match_format", default: 1, null: false
+    t.integer "number_of_coats", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "match_members", force: :cascade do |t|
+    t.integer "match_id", null: false
+    t.integer "member_id", null: false
+    t.integer "side", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_match_members_on_match_id"
+    t.index ["member_id"], name: "index_match_members_on_member_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "coat_num", default: 1, null: false
+    t.integer "sequence_num", default: 1, null: false
+    t.integer "match_format", default: 1, null: false
+    t.integer "home_score", default: 0, null: false
+    t.integer "away_score", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_matches_on_event_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.string "display_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_members_on_event_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "match_members", "matches"
+  add_foreign_key "match_members", "members"
+  add_foreign_key "matches", "events"
+  add_foreign_key "members", "events"
 end
