@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_02_135956) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_09_140313) do
+  create_table "events", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "match_format", default: 1, null: false
+    t.integer "number_of_coats", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
