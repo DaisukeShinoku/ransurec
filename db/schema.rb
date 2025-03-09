@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_09_141831) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_09_143549) do
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
     t.integer "match_format", default: 1, null: false
@@ -31,6 +31,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_09_141831) do
     t.index ["event_id"], name: "index_matches_on_event_id"
   end
 
+  create_table "members", force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.string "display_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_members_on_event_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -38,4 +46,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_09_141831) do
   end
 
   add_foreign_key "matches", "events"
+  add_foreign_key "members", "events"
 end
