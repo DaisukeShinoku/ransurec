@@ -21,12 +21,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_093346) do
 
   create_table "match_players", force: :cascade do |t|
     t.integer "match_id", null: false
-    t.integer "member_id", null: false
+    t.integer "player_id", null: false
     t.integer "side", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["match_id"], name: "index_match_players_on_match_id"
-    t.index ["member_id"], name: "index_match_players_on_member_id"
+    t.index ["player_id"], name: "index_match_players_on_player_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -56,7 +56,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_093346) do
   end
 
   add_foreign_key "match_players", "matches"
-  add_foreign_key "match_players", "members"
+  add_foreign_key "match_players", "players"
   add_foreign_key "matches", "events"
   add_foreign_key "players", "events"
 end
