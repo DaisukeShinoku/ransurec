@@ -1,0 +1,211 @@
+# コート2面、プレイヤー14人
+sequence1:
+  coat1:
+    home: [1, 2]
+    away: [3, 4]
+  coat2:
+    home: [5, 6]
+    away: [7, 8]
+sequence2:
+  coat1:
+    home: [9, 10]
+    away: [11, 12]
+  coat2:
+    home: [13, 14]
+    away: [1, 5]
+sequence3:
+  coat1:
+    home: [2, 6]
+    away: [3, 9]
+  coat2:
+    home: [4, 7]
+    away: [10, 13]
+sequence4:
+  coat1:
+    home: [8, 11]
+    away: [12, 14]
+  coat2:
+    home: [1, 3]
+    away: [5, 9]
+sequence5:
+  coat1:
+    home: [2, 7]
+    away: [4, 10]
+  coat2:
+    home: [6, 12]
+    away: [8, 13]
+sequence6:
+  coat1:
+    home: [1, 11]
+    away: [5, 14]
+  coat2:
+    home: [3, 7]
+    away: [9, 12]
+sequence7:
+  coat1:
+    home: [2, 8]
+    away: [4, 11]
+  coat2:
+    home: [6, 10]
+    away: [13, 14]
+sequence8:
+  coat1:
+    home: [1, 12]
+    away: [3, 8]
+  coat2:
+    home: [5, 7]
+    away: [9, 11]
+sequence9:
+  coat1:
+    home: [2, 13]
+    away: [4, 12]
+  coat2:
+    home: [6, 9]
+    away: [10, 14]
+sequence10:
+  coat1:
+    home: [1, 4]
+    away: [7, 13]
+  coat2:
+    home: [3, 11]
+    away: [5, 8]
+sequence11:
+  coat1:
+    home: [2, 9]
+    away: [6, 11]
+  coat2:
+    home: [10, 12]
+    away: [1, 14]
+sequence12:
+  coat1:
+    home: [3, 5]
+    away: [7, 12]
+  coat2:
+    home: [4, 8]
+    away: [9, 13]
+sequence13:
+  coat1:
+    home: [1, 6]
+    away: [10, 11]
+  coat2:
+    home: [2, 5]
+    away: [14, 7]
+sequence14:
+  coat1:
+    home: [3, 13]
+    away: [4, 9]
+  coat2:
+    home: [8, 12]
+    away: [6, 14]
+sequence15:
+  coat1:
+    home: [1, 10]
+    away: [5, 13]
+  coat2:
+    home: [2, 11]
+    away: [7, 9]
+sequence16:
+  coat1:
+    home: [3, 14]
+    away: [4, 6]
+  coat2:
+    home: [8, 10]
+    away: [12, 13]
+sequence17:
+  coat1:
+    home: [1, 7]
+    away: [11, 12]
+  coat2:
+    home: [2, 4]
+    away: [5, 6]
+sequence18:
+  coat1:
+    home: [9, 14]
+    away: [3, 10]
+  coat2:
+    home: [8, 13]
+    away: [1, 9]
+sequence19:
+  coat1:
+    home: [2, 12]
+    away: [5, 11]
+  coat2:
+    home: [6, 7]
+    away: [4, 14]
+sequence20:
+  coat1:
+    home: [1, 8]
+    away: [10, 13]
+  coat2:
+    home: [3, 12]
+    away: [9, 11]
+sequence21:
+  coat1:
+    home: [2, 14]
+    away: [5, 7]
+  coat2:
+    home: [4, 13]
+    away: [6, 8]
+sequence22:
+  coat1:
+    home: [1, 3]
+    away: [11, 14]
+  coat2:
+    home: [9, 10]
+    away: [12, 7]
+sequence23:
+  coat1:
+    home: [2, 6]
+    away: [8, 11]
+  coat2:
+    home: [4, 5]
+    away: [13, 9]
+sequence24:
+  coat1:
+    home: [1, 13]
+    away: [3, 6]
+  coat2:
+    home: [7, 10]
+    away: [12, 14]
+sequence25:
+  coat1:
+    home: [2, 9]
+    away: [4, 7]
+  coat2:
+    home: [5, 8]
+    away: [11, 13]
+sequence26:
+  coat1:
+    home: [1, 12]
+    away: [6, 9]
+  coat2:
+    home: [3, 4]
+    away: [10, 14]
+sequence27:
+  coat1:
+    home: [2, 10]
+    away: [5, 12]
+  coat2:
+    home: [7, 13]
+    away: [8, 9]
+sequence28:
+  coat1:
+    home: [1, 11]
+    away: [4, 6]
+  coat2:
+    home: [3, 5]
+    away: [14, 8]
+sequence29:
+  coat1:
+    home: [2, 7]
+    away: [9, 12]
+  coat2:
+    home: [10, 13]
+    away: [1, 4]
+sequence30:
+  coat1:
+    home: [5, 9]
+    away: [6, 10]
+  coat2:
+    home: [11, 14]
+    away: [3, 7]
