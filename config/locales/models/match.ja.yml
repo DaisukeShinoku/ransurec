@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      match: 試合
+    attributes:
+      match:
+        event: イベント
+        coat_num: 実施コート
+        sequence_num: 試合順
+        match_format: 試合形式
+        home_score: ホーム側のスコア
+        away_score: アウェイ側のスコア

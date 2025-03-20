@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      event: イベント
+    attributes:
+      event:
+        name: イベント名
+        match_format: 試合形式
+        number_of_coats: コート数

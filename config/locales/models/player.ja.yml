@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      player: 選手
+    attributes:
+      player:
+        event: イベント
+        display_name: 表示名
