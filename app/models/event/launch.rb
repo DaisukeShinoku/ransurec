@@ -19,7 +19,7 @@ class Event::Launch
   # rubocop:enable all
 
   def save!
-    raise ActiveRecord::RecordInvalid, self unless valid?
+    raise StandardError, errors.full_messages.join(", ") if invalid?
 
     ApplicationRecord.transaction do
       event = Event.create!(name:, match_format:, number_of_coats:)
