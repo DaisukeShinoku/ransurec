@@ -119,23 +119,3 @@ sequence30:
   coat1:
     home: [2, 7]
     away: [3, 6]
-sequence31:
-  coat1:
-    home: [1, 5]
-    away: [4, 7]
-sequence32:
-  coat1:
-    home: [2, 3]
-    away: [6, 7]
-sequence33:
-  coat1:
-    home: [1, 4]
-    away: [5, 6]
-sequence34:
-  coat1:
-    home: [2, 7]
-    away: [3, 5]
-sequence35:
-  coat1:
-    home: [1, 6]
-    away: [4, 7]
