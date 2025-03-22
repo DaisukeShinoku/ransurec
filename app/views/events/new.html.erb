@@ -1,0 +1,35 @@
+<h1>New event</h1>
+
+<%= form_with model: @event, url: events_path do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name, value: Time.now.strftime("%Y年%m月%d日%H時%M分") %>
+  </div>
+  <div>
+    <%= form.label :match_format %>
+    <% Event.match_formats.keys.each do |key| %>
+      <div>
+        <%= form.radio_button :match_format, key, checked: key == "doubles" %>
+        <%= form.label :match_format, I18n.t("enums.event.match_format.#{key}"), value: key %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :number_of_coats %>
+    <div>
+      <%= form.radio_button :number_of_coats, 1, checked: true%>
+      <%= form.label :number_of_coats, '1面', value: 1 %>
+    </div>
+    <div>
+      <%= form.radio_button :number_of_coats, 2 %>
+      <%= form.label :number_of_coats, '2面', value: 2 %>
+    </div>
+  </div>
+  <div>
+    <%= form.label :number_of_players %>
+    <%= form.number_field :number_of_players, in: 2..16, value: 4 %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
