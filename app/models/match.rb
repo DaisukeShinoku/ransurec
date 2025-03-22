@@ -2,6 +2,8 @@ class Match < ApplicationRecord
   belongs_to :event
   has_many :match_players, dependent: :destroy
   has_many :players, through: :match_players, dependent: :destroy
+  has_many :home_players, -> { where(match_players: { side: :home }) }, through: :match_players, source: :player
+  has_many :away_players, -> { where(match_players: { side: :away }) }, through: :match_players, source: :player
 
   validates :coat_num, presence: true, numericality: { only_integer: true, greater_than: 0 }
   enum :match_format, { singles: 1, doubles: 2 }, validate: true
