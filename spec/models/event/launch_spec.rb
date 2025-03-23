@@ -73,12 +73,13 @@ RSpec.describe Event::Launch, type: :model do
     context "異常系" do
       context "コート1面あたりの人数が8人を超える場合" do
         let(:match_format) { "doubles" }
-        let(:number_of_coats) { 2 }
-        let(:number_of_players) { 17 }
+        let(:number_of_coats) { 1 }
+        let(:number_of_players) { 9 }
 
-        it "ActiveModel::StrictValidationFailedが発生すること" do
+        it "falseを返すこと" do
           launch = described_class.new(name:, match_format:, number_of_coats:, number_of_players:)
-          expect { launch.save! }.to raise_error(ActiveModel::StrictValidationFailed)
+          expect(launch.save!).to be_falsey
+          expect(launch.errors.full_messages).to eq(["選手数は8以下の値にしてください"])
         end
       end
 
@@ -87,9 +88,10 @@ RSpec.describe Event::Launch, type: :model do
         let(:number_of_coats) { 2 }
         let(:number_of_players) { 3 }
 
-        it "ActiveModel::StrictValidationFailedが発生すること" do
+        it "falseを返すこと" do
           launch = described_class.new(name:, match_format:, number_of_coats:, number_of_players:)
-          expect { launch.save! }.to raise_error(ActiveModel::StrictValidationFailed)
+          expect(launch.save!).to be_falsey
+          expect(launch.errors.full_messages).to eq(["選手数は8以上の値にしてください"])
         end
       end
 
@@ -98,9 +100,10 @@ RSpec.describe Event::Launch, type: :model do
         let(:number_of_coats) { 2 }
         let(:number_of_players) { 3 }
 
-        it "ActiveModel::StrictValidationFailedが発生すること" do
+        it "falseを返すこと" do
           launch = described_class.new(name:, match_format:, number_of_coats:, number_of_players:)
-          expect { launch.save! }.to raise_error(ActiveModel::StrictValidationFailed)
+          expect(launch.save!).to be_falsey
+          expect(launch.errors.full_messages).to eq(["選手数は4以上の値にしてください"])
         end
       end
     end
