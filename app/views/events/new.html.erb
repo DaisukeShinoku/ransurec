@@ -3,10 +3,18 @@
 <%= form_with model: @event, url: events_path do |form| %>
   <div>
     <%= form.label :name %>
-    <%= form.text_field :name, value: Time.now.strftime("%Y年%m月%d日%H時%M分") %>
+    <% @event.errors.full_messages_for(:name).each do |msg| %>
+      <span style="color:red;"><%= msg %></span><br>
+    <% end %>
+    <div>
+      <%= form.text_field :name, value: Time.now.strftime("%Y年%m月%d日%H時%M分") %>
+    </div>
   </div>
   <div>
     <%= form.label :match_format %>
+    <% @event.errors.full_messages_for(:match_format).each do |msg| %>
+      <span style="color:red;"><%= msg %></span><br>
+    <% end %>
     <% Event.match_formats.keys.each do |key| %>
       <div>
         <%= form.radio_button :match_format, key, checked: key == "doubles" %>
@@ -16,6 +24,9 @@
   </div>
   <div>
     <%= form.label :number_of_coats %>
+    <% @event.errors.full_messages_for(:number_of_coats).each do |msg| %>
+      <span style="color:red;"><%= msg %></span><br>
+    <% end %>
     <div>
       <%= form.radio_button :number_of_coats, 1, checked: true%>
       <%= form.label :number_of_coats, '1面', value: 1 %>
@@ -27,9 +38,15 @@
   </div>
   <div>
     <%= form.label :number_of_players %>
+    <% @event.errors.full_messages_for(:number_of_players).each do |msg| %>
+      <span style="color:red;"><%= msg %></span><br>
+    <% end %>
     <%= form.number_field :number_of_players, in: 2..16, value: 4 %>
   </div>
   <div>
     <%= form.submit %>
+    <% if @event.errors.size > 0 %>
+      <div style="color:red;">イベントの登録に失敗しました。</div>
+    <% end %>
   </div>
 <% end %>

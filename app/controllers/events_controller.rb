@@ -9,10 +9,12 @@ class EventsController < ApplicationController
 
   def create
     @event = Event::Launch.new(event_params)
-    event = @event.save!
-    redirect_to event_path(event)
-  rescue StandardError
-    render :new
+
+    if @event.save!
+      redirect_to event_path(@event)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
