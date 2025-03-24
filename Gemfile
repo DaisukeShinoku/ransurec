@@ -67,7 +67,7 @@ group :development, :test do
 
   # system test
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.29", ">= 4.29.1"
+  gem "selenium-webdriver", "~> 4.30"
 
   # カバレッジ計測
   gem "simplecov"
