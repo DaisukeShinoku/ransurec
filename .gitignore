@@ -35,3 +35,6 @@
 
 # SimpleCovで生成されたファイルを除外
 /coverage
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
