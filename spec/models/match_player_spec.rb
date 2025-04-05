@@ -24,8 +24,8 @@ RSpec.describe MatchPlayer, type: :model do
 
             match = Match.find_by(sequence_num: 11, coat_num: 1)
 
-            home_player_names = match.match_players.where(side: "home").map { _1.player.display_name }
-            away_player_names = match.match_players.where(side: "away").map { _1.player.display_name }
+            home_player_names = match.match_players.where(side: "home").map { it.player.display_name }
+            away_player_names = match.match_players.where(side: "away").map { it.player.display_name }
 
             expect(home_player_names).to eq(["選手6"])
             expect(away_player_names).to eq(["選手1"])
@@ -44,8 +44,8 @@ RSpec.describe MatchPlayer, type: :model do
 
             match = Match.find_by(sequence_num: 29, coat_num: 2)
 
-            home_player_names = match.match_players.where(side: "home").map { _1.player.display_name }
-            away_player_names = match.match_players.where(side: "away").map { _1.player.display_name }
+            home_player_names = match.match_players.where(side: "home").map { it.player.display_name }
+            away_player_names = match.match_players.where(side: "away").map { it.player.display_name }
 
             expect(home_player_names).to eq(["選手11"])
             expect(away_player_names).to eq(["選手2"])
@@ -68,8 +68,8 @@ RSpec.describe MatchPlayer, type: :model do
 
             match = Match.find_by(sequence_num: 14, coat_num: 1)
 
-            home_player_names = match.match_players.where(side: "home").map { _1.player.display_name }
-            away_player_names = match.match_players.where(side: "away").map { _1.player.display_name }
+            home_player_names = match.match_players.where(side: "home").map { it.player.display_name }
+            away_player_names = match.match_players.where(side: "away").map { it.player.display_name }
 
             expect(home_player_names).to eq(%w[選手3 選手5])
             expect(away_player_names).to eq(%w[選手1 選手4])
@@ -88,8 +88,8 @@ RSpec.describe MatchPlayer, type: :model do
 
             match = Match.find_by(sequence_num: 27, coat_num: 2)
 
-            home_player_names = match.match_players.where(side: "home").map { _1.player.display_name }
-            away_player_names = match.match_players.where(side: "away").map { _1.player.display_name }
+            home_player_names = match.match_players.where(side: "home").map { it.player.display_name }
+            away_player_names = match.match_players.where(side: "away").map { it.player.display_name }
 
             expect(home_player_names).to eq(%w[選手9 選手11])
             expect(away_player_names).to eq(%w[選手3 選手5])
