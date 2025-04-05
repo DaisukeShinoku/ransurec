@@ -24,7 +24,7 @@ class MatchPlayer < ApplicationRecord
         coat_side_array.each do |side|
           player_nums = random_number_table["sequence#{match.sequence_num}"]["coat#{match.coat_num}"][side]
           player_nums.each do |player_num|
-            player = all_players.find { _1.display_name == "選手#{player_num}" }
+            player = all_players.find { it.display_name == "選手#{player_num}" }
             match_players << { match_id: match.id, player_id: player.id, side: side }
           end
         end
