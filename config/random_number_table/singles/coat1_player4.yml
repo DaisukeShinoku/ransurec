@@ -1,0 +1,25 @@
+# コート1面、プレイヤー4人
+sequence1:
+  coat1:
+    home: [1]
+    away: [2]
+sequence2:
+  coat1:
+    home: [3]
+    away: [4]
+sequence3:
+  coat1:
+    home: [1]
+    away: [3]
+sequence4:
+  coat1:
+    home: [2]
+    away: [4]
+sequence5:
+  coat1:
+    home: [1]
+    away: [4]
+sequence6:
+  coat1:
+    home: [3]
+    away: [2]

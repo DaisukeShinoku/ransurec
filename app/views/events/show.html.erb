@@ -1,0 +1,24 @@
+<h1><%= @event.name %></h1>
+
+<div id="matches">
+  <% @event.matches.order(:sequence_num, :coat_num).each do |match| %>
+    <div>
+      <h2>Sequence Number: <%= match.sequence_num %></h2>
+      <h3>Coat Number: <%= match.coat_num %></h3>
+      <h4>Home Players:</h4>
+      <ul>
+        <% match.home_players.each do |player| %>
+          <li><%= player.display_name %></li>
+        <% end %>
+      </ul>
+      <h4>Away Players</h4>
+      <ul>
+        <% match.away_players.each do |player| %>
+          <li><%= player.display_name %></li>
+        <% end %>
+      </ul>
+      <p>Home Score: <%= match.home_score %></p>
+      <p>Away Score: <%= match.away_score %></p>
+    </div>
+  <% end %>
+</div>

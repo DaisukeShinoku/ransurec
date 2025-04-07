@@ -47,6 +47,9 @@ Metrics/BlockNesting:
 Metrics/ClassLength:
   Max: 120
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 

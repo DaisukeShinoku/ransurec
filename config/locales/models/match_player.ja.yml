@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      match_player: 試合_選手
+    attributes:
+      match_player:
+        match: 試合
+        player: 選手
+        side: サイド

@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      event: イベント
+    attributes:
+      event:
+        name: イベント名
+        match_format: 試合形式
+        number_of_coats: コート数
+        number_of_players: 選手数
+  enums:
+    event:
+      match_format:
+        singles: シングルス
+        doubles: ダブルス

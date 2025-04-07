@@ -1,0 +1,52 @@
+<h1>乱数表の作成</h1>
+
+<%= form_with model: @event, url: events_path do |form| %>
+  <div>
+    <%= form.label :name %>
+    <% @event.errors.full_messages_for(:name).each do |msg| %>
+      <span style="color:red;"><%= msg %></span><br>
+    <% end %>
+    <div>
+      <%= form.text_field :name, value: (@event.name || Time.now.strftime("%Y年%m月%d日%H時%M分")) %>
+    </div>
+  </div>
+  <div>
+    <%= form.label :match_format %>
+    <% @event.errors.full_messages_for(:match_format).each do |msg| %>
+      <span style="color:red;"><%= msg %></span><br>
+    <% end %>
+    <% Event.match_formats.keys.each do |key| %>
+      <div>
+        <%= form.radio_button :match_format, key, checked: key == (@event.match_format || "doubles") %>
+        <%= form.label :match_format, I18n.t("enums.event.match_format.#{key}"), value: key %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :number_of_coats %>
+    <% @event.errors.full_messages_for(:number_of_coats).each do |msg| %>
+      <span style="color:red;"><%= msg %></span><br>
+    <% end %>
+    <div>
+      <%= form.radio_button :number_of_coats, 1, checked: (@event.number_of_coats == 1 || @event.number_of_coats.nil? ) %>
+      <%= form.label :number_of_coats, '1面', value: 1 %>
+    </div>
+    <div>
+      <%= form.radio_button :number_of_coats, 2, checked: @event.number_of_coats == 2 %>
+      <%= form.label :number_of_coats, '2面', value: 2 %>
+    </div>
+  </div>
+  <div>
+    <%= form.label :number_of_players %>
+    <% @event.errors.full_messages_for(:number_of_players).each do |msg| %>
+      <span style="color:red;"><%= msg %></span><br>
+    <% end %>
+    <%= form.number_field :number_of_players, in: 2..16, value: @event.number_of_players || 4 %>
+  </div>
+  <div>
+    <%= form.submit %>
+    <% if @event.errors.size > 0 %>
+      <div style="color:red;">イベントの登録に失敗しました。</div>
+    <% end %>
+  </div>
+<% end %>
