@@ -7,4 +7,4 @@ Rails.application.config.assets.version = "1.0"
 # Rails.application.config.assets.paths << Emoji.images_path
 
 # tailwind読み込み定義  
-Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets', 'tailwind')
+Rails.application.config.assets.paths << Rails.root.join("app", "assets", "stylesheets", "tailwind")

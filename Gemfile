@@ -44,7 +44,7 @@ gem "thruster", require: false
 gem "rails-i18n"
 
 # Tailwind CSS導入
-gem 'tailwindcss-rails'
+gem "tailwindcss-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
