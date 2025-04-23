@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "events#new"
-  resources :events, only: %i[show new create]
+  resources :events, only: %i[show new create update] do
+    member do 
+      post :display_form
+    end
+  end
   resources :products
+
 end

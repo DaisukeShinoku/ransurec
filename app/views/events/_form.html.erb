@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "dialogue" do %>
+  <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800"  style="display: <%= @status %>;">
+    <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">プレイヤー名変更</h2>
+    <%= form_with model: @event, url: event_path(@event), data: { turbo_stream: true} do |form| %>
+        <% @event.players.each do |player| %>
+          <%= form.fields_for :players, player, index: player.id do |player_form| %>
+            <div class='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2'>
+              <div>
+                <%= player_form.label :display_name, class:"block text-sm text-gray-500 dark:text-gray-300" %>
+                <%= player_form.text_field :display_name, class:"block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+          <%= form.submit %>
+      <% end %>
+  </section>
+<% end %>
