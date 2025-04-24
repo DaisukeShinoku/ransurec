@@ -33,7 +33,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.replace("event_content_#{@event.id}", partial: "events/replace_match", locals: { event: @event }),
+          turbo_stream.replace("event_#{@event.id}", partial: "events/replace_match", locals: { event: @event }),
           turbo_stream.replace("dialogue", partial: "events/replace_form", locals: { event: @event, status: @status }),
       ]
       end

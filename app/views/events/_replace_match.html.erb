@@ -1,4 +1,4 @@
-<div id="event_content_<%= @event.id %>">
+<div id="event_<%= @event.id %>">
   <% event.matches.order(:sequence_num, :coat_num).each do |match| %>
     <div class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
       <h2>Sequence Number: <%= match.sequence_num %></h2>
