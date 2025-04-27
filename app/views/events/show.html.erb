@@ -1,24 +1,57 @@
-<h1><%= @event.name %></h1>
+<div class="max-w-6xl mx-auto py-8 px-4">
+  <div class="bg-gradient-to-r from-indigo-600 to-blue-500 rounded-lg shadow-lg mb-8 p-6">
+    <h1 class="text-3xl font-bold text-white"><%= @event.name %></h1>
+    <p class="text-indigo-100 mt-2">コート数: <%= @event.number_of_coats %>面 | 試合形式: <%= t("enums.event.match_format.#{@event.match_format}") %></p>
+  </div>
 
-<div id="matches">
-  <% @event.matches.order(:sequence_num, :coat_num).each do |match| %>
-    <div>
-      <h2>Sequence Number: <%= match.sequence_num %></h2>
-      <h3>Coat Number: <%= match.coat_num %></h3>
-      <h4>Home Players:</h4>
-      <ul>
-        <% match.home_players.each do |player| %>
-          <li><%= player.display_name %></li>
-        <% end %>
-      </ul>
-      <h4>Away Players</h4>
-      <ul>
-        <% match.away_players.each do |player| %>
-          <li><%= player.display_name %></li>
-        <% end %>
-      </ul>
-      <p>Home Score: <%= match.home_score %></p>
-      <p>Away Score: <%= match.away_score %></p>
-    </div>
-  <% end %>
+  <div id="matches" class="space-y-10">
+    <% @event.matches_grouped_by_sequence.each do |sequence_num, matches| %>
+      <div class="match-group">
+        <div class="bg-gray-100 py-2 px-4 rounded-t-lg border-b-2 border-indigo-500">
+          <h2 class="text-xl font-bold text-gray-800"><%= sequence_num %></h2>
+        </div>
+        
+        <div class="space-y-4 mt-4">
+          <% matches.each do |match| %>
+            <div class="match-item bg-white rounded-lg shadow p-4">
+              <div class="text-center mb-2 bg-indigo-100 py-1 px-2 rounded-md inline-block text-indigo-800 font-medium">
+                <%= match.coat_num == 1 ? "Aコート" : "Bコート" %>
+              </div>
+              
+              <div class="flex items-center justify-between">
+                <!-- 左側（Home） -->
+                <div class="w-2/5">
+                  <ul class="space-y-1 text-center">
+                    <% match.home_players.each do |player| %>
+                      <li class="bg-blue-50 py-2 px-3 rounded-md"><%= player.display_name %></li>
+                    <% end %>
+                  </ul>
+                  <div class="mt-2 text-center">
+                    <span class="text-xl font-bold bg-blue-100 py-1 px-3 rounded-full inline-block min-w-10"><%= match.home_score %></span>
+                  </div>
+                </div>
+                
+                <!-- 中央 -->
+                <div class="text-center">
+                  <div class="text-xl font-bold text-gray-500">VS</div>
+                </div>
+                
+                <!-- 右側（Away） -->
+                <div class="w-2/5">
+                  <ul class="space-y-1 text-center">
+                    <% match.away_players.each do |player| %>
+                      <li class="bg-red-50 py-2 px-3 rounded-md"><%= player.display_name %></li>
+                    <% end %>
+                  </ul>
+                  <div class="mt-2 text-center">
+                    <span class="text-xl font-bold bg-red-100 py-1 px-3 rounded-full inline-block min-w-10"><%= match.away_score %></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
