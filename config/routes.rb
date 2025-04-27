@@ -14,5 +14,10 @@ Rails.application.routes.draw do
   root "events#new"
   resources :events, only: %i[show new create]
   resources :matches, only: %i[update]
+  resources :players, only: [] do
+    collection do
+      patch :update_all
+    end
+  end
   resources :products
 end
