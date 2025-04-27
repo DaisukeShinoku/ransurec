@@ -10,3 +10,8 @@ ja:
         match_format: 試合形式
         home_score: ホーム側のスコア
         away_score: アウェイ側のスコア
+  match:
+    notices:
+      updated: 試合結果が記録されました
+    alerts:
+      update_failed: 試合結果の記録に失敗しました

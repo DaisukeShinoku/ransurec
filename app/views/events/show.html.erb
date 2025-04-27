@@ -4,22 +4,31 @@
     <p class="text-indigo-100 mt-2">コート数: <%= @event.number_of_coats %>面 | 試合形式: <%= t("enums.event.match_format.#{@event.match_format}") %></p>
   </div>
 
+  <% if notice.present? %>
+    <div class="bg-green-100 text-green-700 p-4 rounded-lg mb-6">
+      <%= notice %>
+    </div>
+  <% end %>
+  
+  <% if alert.present? %>
+    <div class="bg-red-100 text-red-700 p-4 rounded-lg mb-6">
+      <%= alert %>
+    </div>
+  <% end %>
+
   <div id="matches" class="space-y-10">
     <% @event.matches_grouped_by_sequence.each do |sequence_num, matches| %>
       <div class="match-group">
         <div class="bg-gray-100 py-2 px-4 rounded-t-lg border-b-2 border-indigo-500">
           <h2 class="text-xl font-bold text-gray-800"><%= sequence_num %></h2>
         </div>
-        
         <div class="space-y-4 mt-4">
           <% matches.each do |match| %>
-            <div class="match-item bg-white rounded-lg shadow p-4">
+            <div class="match-item bg-white rounded-lg shadow p-4" data-controller="score">
               <div class="text-center mb-2 bg-indigo-100 py-1 px-2 rounded-md inline-block text-indigo-800 font-medium">
                 <%= match.coat_num == 1 ? "Aコート" : "Bコート" %>
               </div>
-              
               <div class="flex items-center justify-between">
-                <!-- 左側（Home） -->
                 <div class="w-2/5">
                   <ul class="space-y-1 text-center">
                     <% match.home_players.each do |player| %>
@@ -27,16 +36,12 @@
                     <% end %>
                   </ul>
                   <div class="mt-2 text-center">
-                    <span class="text-xl font-bold bg-blue-100 py-1 px-3 rounded-full inline-block min-w-10"><%= match.home_score %></span>
+                    <span class="text-xl font-bold bg-blue-100 py-1 px-3 rounded-full inline-block min-w-10 cursor-pointer hover:bg-blue-200" data-action="click->score#openDialog" data-score-side-value="home"><%= match.home_score %></span>
                   </div>
                 </div>
-                
-                <!-- 中央 -->
                 <div class="text-center">
                   <div class="text-xl font-bold text-gray-500">VS</div>
                 </div>
-                
-                <!-- 右側（Away） -->
                 <div class="w-2/5">
                   <ul class="space-y-1 text-center">
                     <% match.away_players.each do |player| %>
@@ -44,10 +49,12 @@
                     <% end %>
                   </ul>
                   <div class="mt-2 text-center">
-                    <span class="text-xl font-bold bg-red-100 py-1 px-3 rounded-full inline-block min-w-10"><%= match.away_score %></span>
+                    <span class="text-xl font-bold bg-red-100 py-1 px-3 rounded-full inline-block min-w-10 cursor-pointer hover:bg-red-200" data-action="click->score#openDialog" data-score-side-value="away"><%= match.away_score %></span>
                   </div>
                 </div>
               </div>
+              <!-- スコア入力ダイアログ（初期状態は非表示） -->
+              <%= render 'matches/score_dialog', match: match %>
             </div>
           <% end %>
         </div>
