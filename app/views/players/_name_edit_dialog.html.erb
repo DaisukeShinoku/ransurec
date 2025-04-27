@@ -1,0 +1,20 @@
+<div class="fixed inset-0 flex items-center justify-center z-50 bg-black/30 backdrop-blur-sm" style="display: none;" data-player-name-target="dialog">
+  <div class="bg-white rounded-lg p-6 max-w-md w-full shadow-xl relative max-h-[90vh] overflow-auto">
+    <h3 class="text-lg font-medium text-gray-900 mb-4 sticky top-0 bg-white py-2">選手名を編集</h3>
+    <%= form_with(url: update_all_players_path, method: :patch, class: "space-y-4", data: { player_name_target: "form", action: "submit->player-name#submitForm" }) do |f| %>
+      <%= f.hidden_field :event_id, value: event.id %>
+      <div class="space-y-2 max-h-[60vh] overflow-y-auto pb-4">
+        <% event.players.each_with_index do |player, index| %>
+          <div class="flex items-center space-x-2">
+            <div class="w-20 flex-shrink-0 text-right text-sm text-gray-600">選手<%= index + 1 %>:</div>
+            <%= f.text_field "players[#{player.id}][display_name]", value: player.display_name, class: "flex-1 p-2 border border-gray-300 rounded-md", maxlength: 10 %>
+          </div>
+        <% end %>
+      </div>
+      <div class="flex justify-center space-x-4 mt-6 sticky bottom-0 bg-white pt-2">
+        <%= f.submit "一括更新", class: "bg-indigo-600 text-white py-2 px-6 rounded-md hover:bg-indigo-700", data: { player_name_target: "submitButton" } %>
+        <button type="button" class="bg-gray-200 text-gray-700 py-2 px-6 rounded-md hover:bg-gray-300" data-action="click->player-name#closeDialog">キャンセル</button>
+      </div>
+    <% end %>
+  </div>
+</div>
