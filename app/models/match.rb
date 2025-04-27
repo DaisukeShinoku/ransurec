@@ -6,6 +6,7 @@ class Match < ApplicationRecord
   has_many :away_players, -> { where(match_players: { side: :away }) }, through: :match_players, source: :player
 
   validates :coat_num, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :home_score, :away_score, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   enum :match_format, { singles: 1, doubles: 2 }, validate: true
 
   class << self
