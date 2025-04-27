@@ -84,5 +84,8 @@ RSpec/MultipleExpectations:
 RSpec/ExampleLength:
   Max: 10
 
+RSpec/IndexedLet:
+  Enabled: false
+
 RSpecRails/InferredSpecType:
   Enabled: false

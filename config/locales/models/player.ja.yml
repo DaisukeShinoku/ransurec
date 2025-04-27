@@ -6,3 +6,8 @@ ja:
       player:
         event: イベント
         display_name: 表示名
+  player:
+    notices:
+      updated: 選手名を更新しました
+    alerts:
+      update_failed: 選手名の更新に失敗しました
