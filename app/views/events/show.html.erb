@@ -29,47 +29,24 @@
 
   <div id="matches" class="space-y-10">
     <% @event.matches_grouped_by_sequence.each do |sequence_num, matches| %>
-      <div class="match-group">
-        <div class="bg-gray-100 py-2 px-4 rounded-t-lg border-b-2 border-indigo-500">
-          <h2 class="text-xl font-bold text-gray-800"><%= sequence_num %></h2>
-        </div>
-        <div class="space-y-4 mt-4">
-          <% matches.each do |match| %>
-            <div class="match-item bg-white rounded-lg shadow p-4" data-controller="score">
-              <div class="text-center mb-2 bg-indigo-100 py-1 px-2 rounded-md inline-block text-indigo-800 font-medium">
-                <%= match.coat_num == 1 ? "Aコート" : "Bコート" %>
-              </div>
-              <div class="flex items-center justify-between">
-                <div class="w-2/5">
-                  <ul class="space-y-1 text-center">
-                    <% match.home_players.each do |player| %>
-                      <li class="bg-blue-50 py-2 px-3 rounded-md"><%= player.display_name %></li>
-                    <% end %>
-                  </ul>
-                  <div class="mt-2 text-center">
-                    <span class="text-xl font-bold bg-blue-100 py-1 px-3 rounded-full inline-block min-w-10 cursor-pointer hover:bg-blue-200" data-action="click->score#openDialog" data-score-side-value="home"><%= match.home_score %></span>
-                  </div>
-                </div>
-                <div class="text-center">
-                  <div class="text-xl font-bold text-gray-500">VS</div>
-                </div>
-                <div class="w-2/5">
-                  <ul class="space-y-1 text-center">
-                    <% match.away_players.each do |player| %>
-                      <li class="bg-red-50 py-2 px-3 rounded-md"><%= player.display_name %></li>
-                    <% end %>
-                  </ul>
-                  <div class="mt-2 text-center">
-                    <span class="text-xl font-bold bg-red-100 py-1 px-3 rounded-full inline-block min-w-10 cursor-pointer hover:bg-red-200" data-action="click->score#openDialog" data-score-side-value="away"><%= match.away_score %></span>
-                  </div>
-                </div>
-              </div>
-              <!-- スコア入力ダイアログ（初期状態は非表示） -->
-              <%= render 'matches/score_dialog', match: match %>
+        <div class="match-group">
+          <div class="bg-gray-100 py-2 px-4 rounded-t-lg border-b-2 border-indigo-500">
+            <h2 class="text-xl font-bold text-gray-800"><%= sequence_num %></h2>
+          </div>
+            <div class="space-y-4 mt-4">
+              <% matches.each do |match| %>
+                <%= turbo_frame_tag "match_id_#{match.id}" do %>
+                  <%= render 'matches/match_detail', match: match %>
+                <% end %>
+                <!-- スコア入力ダイアログ（初期状態は非表示） -->
+                <%= turbo_frame_tag "dialog_match_id_#{match.id}" do %>
+                  <%= render 'matches/score_dialog', match: match, status: @status %>
+                <% end %>
+              <% end %>
             </div>
-          <% end %>
+
         </div>
-      </div>
+
     <% end %>
   </div>
 </div>

@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "events#new"
   resources :events, only: %i[show new create]
-  resources :matches, only: %i[update]
+  resources :matches, only: %i[update] do 
+    member do
+      get :show_score_dialogue
+    end
+  end
   resources :players, only: [] do
     collection do
       patch :update_all
