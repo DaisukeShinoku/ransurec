@@ -33,7 +33,7 @@ class MatchesController < ApplicationController
     end
   end
 
-  def show_score_dialogue
+  def show_score_dialog
     @match = Match.find(params[:id])
     # displayを切り替える
     @status = "block"

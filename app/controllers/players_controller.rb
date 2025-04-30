@@ -25,4 +25,7 @@ class PlayersController < ApplicationController
       end
     end
   end
+
+  def show_player_name_dialog
+  end
 end

@@ -15,12 +15,13 @@ Rails.application.routes.draw do
   resources :events, only: %i[show new create]
   resources :matches, only: %i[update] do 
     member do
-      get :show_score_dialogue
+      get :show_score_dialog
     end
   end
   resources :players, only: [] do
     collection do
       patch :update_all
+      get :show_player_name_dialog
     end
   end
   resources :products

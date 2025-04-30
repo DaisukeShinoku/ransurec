@@ -18,12 +18,16 @@
 
   <!-- 選手名編集ダイアログ -->
   <div data-controller="player-name" class="mb-6">
-    <button type="button" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm flex items-center" data-action="click->player-name#openDialog">
+    <%= button_to(show_player_name_dialog_players_path(@event), # URL は nil を指定
+                  method: :get, # GET メソッドを指定 (POST など他のメソッドでも可)
+                  class: "bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm flex items-center",
+                  form: { data: { turbo_frame: "_top" } } # Turbo Frame を指定して画面遷移を防ぐ (必要に応じて)
+                ) do %>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
       </svg>
       選手名編集
-    </button>
+    <% end %>
     <%= render 'players/name_edit_dialog', event: @event %>
   </div>
 
