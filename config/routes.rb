@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   resources :players, only: [] do
     collection do
       patch :update_all
-      get :show_player_name_dialog
     end
   end
   resources :products
