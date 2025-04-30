@@ -9,4 +9,21 @@ class Event < ApplicationRecord
   def matches_grouped_by_sequence
     matches.order(:sequence_num, :coat_num).group_by(&:sequence_num)
   end
+
+  def player_standings
+    player_stats = players.map do |player|
+      {
+        id: player.id,
+        name: player.display_name,
+        wins: player.wins_count,
+        losses: player.losses_count,
+        win_rate: player.win_rate,
+        games_won: player.games_won,
+        games_lost: player.games_lost,
+        game_win_rate: player.game_win_rate
+      }
+    end
+
+    player_stats.sort_by { |stats| [-stats[:win_rate], -stats[:game_win_rate]] }
+  end
 end
