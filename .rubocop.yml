@@ -82,7 +82,7 @@ RSpec/MultipleExpectations:
   Enabled: false
 
 RSpec/ExampleLength:
-  Max: 10
+  Max: 20
 
 RSpec/IndexedLet:
   Enabled: false

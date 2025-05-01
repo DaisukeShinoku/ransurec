@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root "events#new"
-  resources :events, only: %i[show new create]
+  resources :events, only: %i[show new create] do
+    resource :standings, only: %i[show]
+  end
   resources :matches, only: %i[update] do 
     member do
       get :show_score_dialog

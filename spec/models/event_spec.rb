@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Event, type: :model do
+  describe "#player_standings" do
+    it "TODO: シングルス・ダブルスそれぞれで1パターンずつテストを追加する"
+  end
+
   describe "#matches_grouped_by_sequence" do
     let(:event) { create(:event) }
 

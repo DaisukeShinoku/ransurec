@@ -1,0 +1,24 @@
+<div class="max-w-6xl mx-auto py-8 px-4">
+  <div class="bg-gradient-to-r from-indigo-600 to-blue-500 rounded-lg shadow-lg mb-8 p-6">
+    <h1 class="text-3xl font-bold text-white"><%= @event.name %></h1>
+    <p class="text-indigo-100 mt-2">個人成績</p>
+  </div>
+  <div class="space-y-10">
+    <% @standings.each_with_index  do |standing, index| %>
+      <div class="bg-white shadow-md rounded-lg p-4 mb-4">
+        <h2 class="text-xl font-bold text-gray-800 mb-2">第<%= index + 1%>位：<%= standing[:name] %></h2>
+        <div class="border border-gray-200 rounded-lg p-4 mb-4">
+          <h3 class="text-l font-bold text-gray-800 mb-2">勝率: <%= standing[:win_rate] %></h3>
+          <p class="text-gray-600">勝利数：<%= standing[:wins] %></p>
+          <p class="text-gray-600">敗北数：<%= standing[:losses] %></p>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-4">
+          <h3 class="text-l font-bold text-gray-800 mb-2">ゲーム取得率: <%= standing[:game_win_rate] %></h3>
+          <p class="text-gray-600">得ゲーム数：<%= standing[:games_won] %></p>
+          <p class="text-gray-600">失ゲーム数： <%= standing[:games_lost] %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <button><%= link_to "試合結果画面に戻る", event_path(@event), class: "bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700" %></button>
+</div>
