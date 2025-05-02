@@ -29,24 +29,22 @@
 
   <div id="matches" class="space-y-10">
     <% @event.matches_grouped_by_sequence.each do |sequence_num, matches| %>
-        <div class="match-group">
-          <div class="bg-gray-100 py-2 px-4 rounded-t-lg border-b-2 border-indigo-500">
-            <h2 class="text-xl font-bold text-gray-800"><%= sequence_num %></h2>
-          </div>
-            <div class="space-y-4 mt-4">
-              <% matches.each do |match| %>
-                <%= turbo_frame_tag "match_id_#{match.id}" do %>
-                  <%= render 'matches/match_detail', match: match %>
-                <% end %>
-                <!-- スコア入力ダイアログ（初期状態は非表示） -->
-                <%= turbo_frame_tag "dialog_match_id_#{match.id}" do %>
-                  <%= render 'matches/score_dialog', match: match, status: @status %>
-                <% end %>
-              <% end %>
-            </div>
-
+      <div class="match-group">
+        <div class="bg-gray-100 py-2 px-4 rounded-t-lg border-b-2 border-indigo-500">
+          <h2 class="text-xl font-bold text-gray-800"><%= sequence_num %></h2>
         </div>
-
+          <div class="space-y-4 mt-4">
+            <% matches.each do |match| %>
+              <%= turbo_frame_tag "match_id_#{match.id}" do %>
+                <%= render 'matches/match_detail', match: match %>
+              <% end %>
+              <!-- スコア入力ダイアログ（初期状態は非表示） -->
+              <%= turbo_frame_tag "dialog_match_id_#{match.id}" do %>
+                <%= render 'matches/score_dialog', match: match, status: @status %>
+              <% end %>
+            <% end %>
+          </div>
+      </div>
     <% end %>
   </div>
 </div>
