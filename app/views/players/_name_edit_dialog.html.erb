@@ -12,8 +12,8 @@
         <% end %>
       </div>
       <div class="flex justify-center space-x-4 mt-6 sticky bottom-0 bg-white pt-2">
-        <%= f.submit "一括更新", class: "bg-indigo-600 text-white py-2 px-6 rounded-md hover:bg-indigo-700", data: { player_name_target: "submitButton" } %>
         <button type="button" class="bg-gray-200 text-gray-700 py-2 px-6 rounded-md hover:bg-gray-300" data-action="click->player-name#closeDialog">キャンセル</button>
+        <%= f.submit "一括更新", class: "bg-indigo-600 text-white py-2 px-6 rounded-md hover:bg-indigo-700", data: { player_name_target: "submitButton" } %>
       </div>
     <% end %>
   </div>
