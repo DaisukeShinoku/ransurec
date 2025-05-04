@@ -7,7 +7,7 @@ class Event::Launch
   attribute :number_of_coats, :integer
   attribute :number_of_players, :integer
 
-  validates :name, presence: true, length: { maximum: 30 }
+  validates :name, length: { maximum: 30 }
   validates :match_format, presence: true, inclusion: { in: Event.match_formats.keys }
   validates :number_of_coats, presence: true, numericality: { only_integer: true, in: 1..2 }
   validates :number_of_players, presence: true, numericality: { only_integer: true, in: 2..16 }
@@ -22,6 +22,8 @@ class Event::Launch
     return false if invalid?
 
     ApplicationRecord.transaction do
+      self.name = Time.zone.now.strftime("%Y年%m月%d日の乱数表") if name.blank?
+
       event = Event.create!(name:, match_format:, number_of_coats:)
       Player.insert_all_default_players(event:, number_of_players:)
       Match.insert_all_default_matches(event:)

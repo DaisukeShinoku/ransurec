@@ -7,9 +7,9 @@ RSpec.describe "events", type: :system do
         visit "/"
 
         expect do
-          click_on "乱数表を"
+          click_on "乱数表を作成"
 
-          expect(page).to have_text(/\d{4}年\d{2}月\d{2}日\d{2}時\d{2}分/)
+          expect(page).to have_text(/\d{4}年\d{2}月\d{2}日/)
         end.to change(Event, :count).by(1)
       end
     end
