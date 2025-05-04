@@ -7,7 +7,7 @@ RSpec.describe "events", type: :system do
         visit "/"
 
         expect do
-          click_on "登録する"
+          click_on "乱数表を"
 
           expect(page).to have_text(/\d{4}年\d{2}月\d{2}日\d{2}時\d{2}分/)
         end.to change(Event, :count).by(1)
@@ -24,7 +24,7 @@ RSpec.describe "events", type: :system do
           choose "2面"
           fill_in "選手数", with: "13"
 
-          click_on "登録する"
+          click_on "乱数表を作成"
 
           expect(page).to have_text("hoge練習会")
         end.to change(Event, :count).by(1)
@@ -41,7 +41,7 @@ RSpec.describe "events", type: :system do
           choose "2面"
           fill_in "選手数", with: "2"
 
-          click_on "登録する"
+          click_on "乱数表を作成"
 
           expect(page).to have_text("イベントの登録に失敗しました。")
         end.not_to change(Event, :count)
