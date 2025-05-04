@@ -15,7 +15,7 @@ RSpec.describe "Events", type: :request do
     it "乱数表の作成画面が表示されること" do
       get root_path
       expect(response).to have_http_status(:ok)
-      expect(response.body).to include("乱数表の作成")
+      expect(response.body).to include("乱数表を作成")
     end
   end
 
