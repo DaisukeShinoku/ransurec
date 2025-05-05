@@ -43,11 +43,18 @@ class MatchesController < ApplicationController
     end
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(
-          "dialog_match_id_#{@match.id}",
-          partial: "matches/score_dialog",
-          locals: { match: @match, status: @status }
-        )
+        render turbo_stream: [
+          turbo_stream.replace(
+            "dialog_match_id_#{@match.id}",
+            partial: "matches/score_dialog",
+            locals: { match: @match, status: @status }
+          ),
+          turbo_stream.replace(
+            "match_id_#{@match.id}",
+            partial: "matches/match_detail",
+            locals: { match: @match }
+          )
+        ]
       end
     end
   end
