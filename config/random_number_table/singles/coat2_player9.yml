@@ -44,9 +44,9 @@ sequence6:
 sequence7:
   coat1:
     home: [6]
-    away: [9]
+    away: [8]
   coat2:
-    home: [10]
+    home: [9]
     away: [3]
 sequence8:
   coat1:
