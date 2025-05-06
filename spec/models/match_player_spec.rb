@@ -63,7 +63,7 @@ RSpec.describe MatchPlayer, type: :model do
         context "選手が5人の場合" do
           let(:number_of_players) { 5 }
 
-          it "第14順の試合の組み合わせが[3,5]vs[1,4]であること" do
+          it "第14順の試合の組み合わせが[2,4]vs[5,3]であること" do
             described_class.insert_all_default_match_players(event: event)
 
             match = Match.find_by(sequence_num: 14, coat_num: 1)
@@ -71,8 +71,8 @@ RSpec.describe MatchPlayer, type: :model do
             home_player_names = match.match_players.where(side: "home").map { it.player.display_name }
             away_player_names = match.match_players.where(side: "away").map { it.player.display_name }
 
-            expect(home_player_names).to eq(%w[選手3 選手5])
-            expect(away_player_names).to eq(%w[選手1 選手4])
+            expect(home_player_names).to eq(%w[選手2 選手4])
+            expect(away_player_names).to eq(%w[選手5 選手3])
           end
         end
       end
