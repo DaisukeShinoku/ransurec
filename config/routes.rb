@@ -25,5 +25,4 @@ Rails.application.routes.draw do
       patch :update_all
     end
   end
-  resources :products
 end

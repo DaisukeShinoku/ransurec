@@ -1,5 +1,0 @@
-<h1><%= @product.name %></h1>
-
-<%= link_to "戻る", products_path %>
-<%= link_to "商品情報の編集", edit_product_path(@product) %>
-<%= button_to "商品の削除", @product, method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
