@@ -176,8 +176,8 @@ sequence10:
       away: [2]
   sequence26:
     coat1:
-      home: [10]
-      away: [6]
+      home: [6]
+      away: [10]
     coat2:
       home: [1]
       away: [7]

@@ -47,165 +47,165 @@ sequence7:
     away: [13]
   coat2:
     home: [1]
-    away: [5]
+    away: [3]
 sequence8:
   coat1:
     home: [2]
-    away: [6]
+    away: [4]
   coat2:
-    home: [3]
+    home: [5]
     away: [7]
 sequence9:
   coat1:
-    home: [4]
+    home: [6]
     away: [8]
   coat2:
     home: [9]
-    away: [13]
+    away: [11]
 sequence10:
   coat1:
     home: [10]
     away: [12]
   coat2:
-    home: [11]
-    away: [1]
+    home: [13]
+    away: [3]
 sequence11:
   coat1:
-    home: [2]
+    home: [1]
     away: [4]
   coat2:
-    home: [3]
-    away: [9]
+    home: [2]
+    away: [5]
 sequence12:
   coat1:
-    home: [5]
-    away: [11]
+    home: [7]
+    away: [9]
   coat2:
     home: [6]
-    away: [12]
+    away: [11]
 sequence13:
   coat1:
-    home: [7]
-    away: [13]
-  coat2:
     home: [8]
     away: [10]
+  coat2:
+    home: [12]
+    away: [3]
 sequence14:
   coat1:
-    home: [1]
-    away: [9]
+    home: [13]
+    away: [2]
   coat2:
-    home: [2]
-    away: [10]
+    home: [1]
+    away: [5]
 sequence15:
   coat1:
-    home: [3]
-    away: [11]
-  coat2:
     home: [4]
-    away: [12]
+    away: [6]
+  coat2:
+    home: [7]
+    away: [11]
 sequence16:
   coat1:
-    home: [5]
-    away: [13]
-  coat2:
-    home: [6]
-    away: [8]
-sequence17:
-  coat1:
-    home: [7]
-    away: [1]
-  coat2:
-    home: [2]
-    away: [3]
-sequence18:
-  coat1:
-    home: [4]
-    away: [6]
-  coat2:
-    home: [5]
-    away: [9]
-sequence19:
-  coat1:
-    home: [7]
-    away: [11]
-  coat2:
-    home: [8]
-    away: [12]
-sequence20:
-  coat1:
-    home: [10]
-    away: [13]
-  coat2:
-    home: [1]
-    away: [5]
-sequence21:
-  coat1:
-    home: [2]
-    away: [7]
-  coat2:
-    home: [3]
-    away: [10]
-sequence22:
-  coat1:
-    home: [4]
-    away: [11]
-  coat2:
-    home: [6]
-    away: [13]
-sequence23:
-  coat1:
-    home: [8]
-    away: [5]
-  coat2:
     home: [9]
     away: [12]
-sequence24:
-  coat1:
-    home: [1]
-    away: [3]
-  coat2:
-    home: [2]
-    away: [6]
-sequence25:
-  coat1:
-    home: [4]
-    away: [10]
-  coat2:
-    home: [7]
-    away: [9]
-sequence26:
-  coat1:
-    home: [5]
-    away: [12]
   coat2:
     home: [8]
     away: [13]
-sequence27:
+sequence17:
   coat1:
-    home: [1]
-    away: [11]
+    home: [10]
+    away: [3]
   coat2:
-    home: [3]
-    away: [7]
-sequence28:
+    home: [1]
+    away: [6]
+sequence18:
   coat1:
     home: [2]
-    away: [9]
+    away: [7]
   coat2:
-    home: [4]
-    away: [5]
-sequence29:
+    home: [5]
+    away: [11]
+sequence19:
   coat1:
-    home: [6]
+    home: [4]
     away: [8]
   coat2:
+    home: [9]
+    away: [13]
+sequence20:
+  coat1:
+    home: [12]
+    away: [1]
+  coat2:
     home: [10]
+    away: [6]
+sequence21:
+  coat1:
+    home: [3]
+    away: [5]
+  coat2:
+    home: [2]
+    away: [11]
+sequence22:
+  coat1:
+    home: [7]
+    away: [4]
+  coat2:
+    home: [8]
+    away: [12]
+sequence23:
+  coat1:
+    home: [13]
+    away: [10]
+  coat2:
+    home: [9]
+    away: [1]
+sequence24:
+  coat1:
+    home: [6]
+    away: [2]
+  coat2:
+    home: [3]
+    away: [11]
+sequence25:
+  coat1:
+    home: [5]
+    away: [8]
+  coat2:
+    home: [4]
+    away: [12]
+sequence26:
+  coat1:
+    home: [7]
+    away: [10]
+  coat2:
+    home: [9]
+    away: [2]
+sequence27:
+  coat1:
+    home: [13]
+    away: [6]
+  coat2:
+    home: [1]
+    away: [11]
+sequence28:
+  coat1:
+    home: [3]
+    away: [8]
+  coat2:
+    home: [5]
+    away: [12]
+sequence29:
+  coat1:
+    home: [4]
+    away: [9]
+  coat2:
+    home: [7]
     away: [13]
 sequence30:
   coat1:
-    home: [7]
-    away: [3]
+    home: [10]
+    away: [2]
   coat2:
-    home: [12]
-    away: [11]
+    home: [1]
+    away: [8]
