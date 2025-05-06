@@ -49,37 +49,37 @@ sequence12:
     away: [5]
 sequence13:
   coat1:
-    home: [4]
-    away: [6]
+    home: [2]
+    away: [7]
 sequence14:
   coat1:
-    home: [7]
-    away: [2]
+    home: [4]
+    away: [6]
 sequence15:
   coat1:
     home: [1]
-    away: [4]
+    away: [5]
 sequence16:
   coat1:
     home: [3]
-    away: [6]
+    away: [7]
 sequence17:
   coat1:
     home: [2]
-    away: [5]
+    away: [6]
 sequence18:
-  coat1:
-    home: [7]
-    away: [3]
-sequence19:
   coat1:
     home: [4]
     away: [1]
-sequence20:
-  coat1:
-    home: [6]
-    away: [2]
-sequence21:
+sequence19:
   coat1:
     home: [5]
-    away: [7]
+    away: [2]
+sequence20:
+  coat1:
+    home: [3]
+    away: [6]
+sequence21:
+  coat1:
+    home: [7]
+    away: [4]

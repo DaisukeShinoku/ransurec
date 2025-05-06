@@ -47,8 +47,8 @@ RSpec.describe Match, type: :model do
         context "選手が5人の場合" do
           let(:number_of_players) { 5 }
 
-          it "イベントに紐付いて15試合が作成されること" do
-            expect { described_class.insert_all_default_matches(event: event) }.to change(described_class, :count).by(15)
+          it "イベントに紐付いて30試合が作成されること" do
+            expect { described_class.insert_all_default_matches(event: event) }.to change(described_class, :count).by(30)
           end
         end
       end
