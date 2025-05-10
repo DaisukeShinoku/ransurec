@@ -78,11 +78,14 @@ RSpec/MessageChain:
 RSpec/NamedSubject:
   Enabled: false
 
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
 RSpec/MultipleExpectations:
   Enabled: false
 
 RSpec/ExampleLength:
-  Max: 20
+  Max: 40
 
 RSpec/IndexedLet:
   Enabled: false
