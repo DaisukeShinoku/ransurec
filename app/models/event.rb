@@ -24,6 +24,33 @@ class Event < ApplicationRecord
       }
     end
 
-    player_stats.sort_by { |stats| [-stats[:win_rate], -stats[:game_win_rate]] }
+    sorted_stats = player_stats.sort_by { |stats| [-stats[:win_rate], -stats[:game_win_rate]] }
+
+    # 順位を割り当てる
+    return [] if sorted_stats.empty?
+
+    current_rank = 1
+    sorted_stats[0][:rank] = current_rank
+
+    # 同じ順位の人数をカウント（スキップする数を計算するため）
+    same_rank_count = 1
+
+    (1...sorted_stats.size).each do |i|
+      current = sorted_stats[i]
+      previous = sorted_stats[i - 1]
+
+      if current[:win_rate] == previous[:win_rate] && current[:game_win_rate] == previous[:game_win_rate]
+        # 前の選手と同じ勝率・ゲーム取得率なら同じ順位を割り当てる
+        current[:rank] = current_rank
+        same_rank_count += 1
+      else
+        # そうでなければ、同順位だった人数分スキップした順位を割り当てる
+        current_rank += same_rank_count
+        current[:rank] = current_rank
+        same_rank_count = 1
+      end
+    end
+
+    sorted_stats
   end
 end
