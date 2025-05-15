@@ -2,17 +2,17 @@
 
 <div class="max-w-6xl mx-auto py-8 px-4">
   <div class="space-y-10">
-    <% @standings.each_with_index  do |standing, index| %>
+    <% @standings.each do |standing| %>
       <div class="bg-gray-50 shadow-md rounded-lg p-4 mb-4">
         <h2 class="text-xl font-bold text-gray-800 mb-2">
-          <% if index + 1 == 1 %>
-            第<%= index + 1%>位🥇<%= standing[:name] %>
-          <% elsif index + 1 == 2 %>
-            第<%= index + 1%>位🥈<%= standing[:name] %>
-          <% elsif index + 1 == 3 %>
-            第<%= index + 1%>位🥉<%= standing[:name] %>
+          <% if standing[:rank] == 1 %>
+            第<%= standing[:rank] %>位🥇<%= standing[:name] %>
+          <% elsif standing[:rank] == 2 %>
+            第<%= standing[:rank] %>位🥈<%= standing[:name] %>
+          <% elsif standing[:rank] == 3 %>
+            第<%= standing[:rank] %>位🥉<%= standing[:name] %>
           <% else %>
-            第<%= index + 1%>位：<%= standing[:name] %>
+            第<%= standing[:rank] %>位：<%= standing[:name] %>
           <% end %>
         </h2>
         <div class="border border-gray-200 rounded-lg p-4 mb-4 bg-blue-50">
