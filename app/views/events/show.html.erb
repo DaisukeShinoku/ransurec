@@ -26,28 +26,33 @@
 
   <div id="matches" class="space-y-10">
     <% @event.matches_grouped_by_sequence.each do |sequence_num, matches| %>
-      <div class="match-group">
-        <div class="bg-gray-50 py-1 px-4 rounded-t-lg border-b border-gray-300">
-          <h2 class="text-sm font-normal text-gray-600"><%= sequence_num %></h2>
+      <div class="match-group bg-white rounded-lg border border-gray-200 overflow-hidden">
+        <div class="bg-gray-100 py-2 px-4 border-b border-gray-200">
+          <h2 class="text-sm font-medium text-gray-700"><%= sequence_num %></h2>
         </div>
-          <div class="space-y-4 mt-4">
-            <% matches.each do |match| %>
-              <%= turbo_frame_tag "match_id_#{match.id}" do %>
-                <%= render 'matches/match_detail', match: match %>
-              <% end %>
-              <!-- スコア入力ダイアログ（初期状態は非表示） -->
-              <%= turbo_frame_tag "dialog_match_id_#{match.id}" do %>
-                <%= render 'matches/score_dialog', match: match, status: @status %>
-              <% end %>
+          <div class="p-4">
+            <% matches.each_with_index do |match, index| %>
+              <div class="<%= index > 0 ? 'mt-6' : '' %>">
+                <%= turbo_frame_tag "match_id_#{match.id}" do %>
+                  <%= render 'matches/match_detail', match: match %>
+                <% end %>
+                <!-- スコア入力ダイアログ（初期状態は非表示） -->
+                <%= turbo_frame_tag "dialog_match_id_#{match.id}" do %>
+                  <%= render 'matches/score_dialog', match: match, status: @status %>
+                <% end %>
+              </div>
             <% end %>
           </div>
       </div>
     <% end %>
   </div>
 
-  <div class="mt-10 text-center">
+  <div class="mt-10 flex justify-center space-x-4">
     <%= link_to root_path, class: "inline-flex items-center bg-gray-500 text-white py-2 px-6 rounded-lg hover:bg-gray-600 transition-colors" do %>
       別の乱数表を作成
+    <% end %>
+    <%= link_to event_standings_path(@event), class: "inline-flex items-center bg-indigo-600 text-white py-2 px-6 rounded-lg hover:bg-indigo-700 transition-colors" do %>
+      成績表を表示
     <% end %>
   </div>
 </div>
