@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :matches, only: %i[update] do 
     member do
       get :show_score_dialog
+      post :rotate
     end
   end
   resources :players, only: [] do
