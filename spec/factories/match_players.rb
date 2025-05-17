@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :match_player do
-    side { rand(1..2) }
+    side { %i[home away].sample }
   end
 end

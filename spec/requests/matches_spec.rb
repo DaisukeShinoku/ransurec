@@ -54,4 +54,81 @@ RSpec.describe "Matches", type: :request do
       end
     end
   end
+
+  describe "match#rotate" do
+    let(:event) { create(:event, match_format: "doubles") }
+    let(:match) { create(:match, event: event, match_format: "doubles") }
+    let(:players) { create_list(:player, 4, event: event) }
+
+    before do
+      # 4人のプレイヤーをマッチに関連付け
+      create(:match_player, match: match, player: players[0], side: :home)
+      create(:match_player, match: match, player: players[1], side: :home)
+      create(:match_player, match: match, player: players[2], side: :away)
+      create(:match_player, match: match, player: players[3], side: :away)
+    end
+
+    context "HTMLリクエストの場合" do
+      it "プレイヤーがローテーションされ、イベント詳細ページにリダイレクトされること" do
+        # プレイヤーIDを取得
+        original_player_ids = match.match_players.order(:id).pluck(:player_id)
+
+        # ローテーションリクエストを送信
+        post rotate_match_path(match)
+
+        # リダイレクトを確認
+        expect(response).to redirect_to(event_path(event))
+        expect(flash[:notice]).to eq(I18n.t("match.notices.rotated"))
+
+        # プレイヤーがローテーションされていることを確認
+        rotated_player_ids = match.reload.match_players.order(:id).pluck(:player_id)
+        expect(rotated_player_ids[0]).to eq(original_player_ids[0]) # 固定プレイヤー
+        expect(rotated_player_ids[1]).to eq(original_player_ids[3])
+        expect(rotated_player_ids[2]).to eq(original_player_ids[1])
+        expect(rotated_player_ids[3]).to eq(original_player_ids[2])
+      end
+    end
+
+    context "Turbo Streamリクエストの場合" do
+      it "プレイヤーがローテーションされ、Turbo Streamレスポンスが返ること" do
+        # プレイヤーIDを取得
+        original_player_ids = match.match_players.order(:id).pluck(:player_id)
+
+        # ローテーションリクエストを送信（Turbo Stream形式で）
+        post rotate_match_path(match), headers: { "Accept" => "text/vnd.turbo-stream.html" }
+
+        # レスポンスを確認
+        expect(response).to have_http_status(:ok)
+        expect(response.media_type).to eq("text/vnd.turbo-stream.html")
+
+        # レスポンス内容にマッチIDが含まれていることを確認
+        expect(response.body).to include("match_id_#{match.id}")
+
+        # プレイヤーがローテーションされていることを確認
+        rotated_player_ids = match.reload.match_players.order(:id).pluck(:player_id)
+        expect(rotated_player_ids[0]).to eq(original_player_ids[0]) # 固定プレイヤー
+        expect(rotated_player_ids[1]).to eq(original_player_ids[3])
+        expect(rotated_player_ids[2]).to eq(original_player_ids[1])
+        expect(rotated_player_ids[3]).to eq(original_player_ids[2])
+      end
+    end
+
+    context "シングルスの試合の場合" do
+      let(:singles_match) { create(:match, event: event, match_format: "singles") }
+      let(:singles_players) { create_list(:player, 2, event: event) }
+
+      before do
+        create(:match_player, match: singles_match, player: singles_players[0], side: :home)
+        create(:match_player, match: singles_match, player: singles_players[1], side: :away)
+      end
+
+      it "プレイヤーがローテーションされないこと" do
+        original_player_ids = singles_match.match_players.order(:id).pluck(:player_id)
+
+        post rotate_match_path(singles_match)
+
+        expect(singles_match.reload.match_players.order(:id).pluck(:player_id)).to eq(original_player_ids)
+      end
+    end
+  end
 end

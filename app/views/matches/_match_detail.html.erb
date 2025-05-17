@@ -16,7 +16,12 @@
       <% end %>
     </div>
     <div class="text-center">
-      <div class="text-xl font-bold text-gray-500">VS</div>
+      <div class="text-xl font-bold text-gray-500 mb-1">VS</div>
+      <% if match.doubles? %>
+        <%= link_to rotate_match_path(match), data: { turbo_method: :post, turbo_stream: true }, class:"text-xs bg-yellow-500 text-white py-1 px-2 rounded-md inline-block cursor-pointer hover:bg-yellow-600" do %>
+          ペア交代
+        <% end %>
+      <% end %>
     </div>
     <div class="w-2/5">
       <ul class="space-y-1 text-center">

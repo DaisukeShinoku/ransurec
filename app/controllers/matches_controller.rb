@@ -59,6 +59,24 @@ class MatchesController < ApplicationController
     end
   end
 
+  def rotate
+    @match = Match.find(params[:id])
+    @match.rotate_match_players
+
+    respond_to do |format|
+      format.html { redirect_to event_path(@match.event), notice: I18n.t("match.notices.rotated") }
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace(
+            "match_id_#{@match.id}",
+            partial: "matches/match_detail",
+            locals: { match: @match }
+          )
+        ]
+      end
+    end
+  end
+
   private
 
   def match_params
