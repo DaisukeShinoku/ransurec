@@ -9,6 +9,24 @@ class Match < ApplicationRecord
   validates :home_score, :away_score, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   enum :match_format, { singles: 1, doubles: 2 }, validate: true
 
+  def rotate_match_players
+    return unless doubles?
+
+    sorted_match_players = match_players.order(:id)
+    return if sorted_match_players.size != 4
+
+    rotating_players = sorted_match_players[1..3]
+    player_ids = rotating_players.map(&:player_id)
+
+    rotated_player_ids = [player_ids[2], player_ids[0], player_ids[1]]
+
+    rotating_players.each_with_index do |mp, index|
+      mp.update!(player_id: rotated_player_ids[index])
+    end
+
+    match_players.reload
+  end
+
   class << self
     def insert_all_default_matches(event:)
       matches = []

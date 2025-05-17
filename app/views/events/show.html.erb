@@ -21,13 +21,17 @@
       成績表表示
     <% end %>
   </div>
+
   <%= turbo_frame_tag "matches_list" do %>
     <%= render 'events/event_matches_list', event: @event, status: @status %>
   <% end %>
   
-  <div class="mt-10 text-center">
+  <div class="mt-10 flex justify-center space-x-4">
     <%= link_to root_path, class: "inline-flex items-center bg-gray-500 text-white py-2 px-6 rounded-lg hover:bg-gray-600 transition-colors" do %>
       別の乱数表を作成
+    <% end %>
+    <%= link_to event_standings_path(@event), class: "inline-flex items-center bg-indigo-600 text-white py-2 px-6 rounded-lg hover:bg-indigo-700 transition-colors" do %>
+      成績表を表示
     <% end %>
   </div>
 </div>

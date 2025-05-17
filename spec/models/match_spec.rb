@@ -68,4 +68,65 @@ RSpec.describe Match, type: :model do
       end
     end
   end
+
+  describe "#rotate_match_players" do
+    let(:event) { create(:event, match_format:) }
+    let(:match) { create(:match, event:, match_format:) }
+    let(:players) { create_list(:player, 4, event:) }
+
+    context "シングルスの場合" do
+      let(:match_format) { "singles" }
+
+      before do
+        create(:match_player, match:, player: players[0], side: :home)
+        create(:match_player, match:, player: players[1], side: :away)
+      end
+
+      it "プレイヤーのローテーションが行われないこと" do
+        original_player_ids = match.match_players.order(:id).pluck(:player_id)
+
+        match.rotate_match_players
+
+        expect(match.match_players.order(:id).pluck(:player_id)).to eq(original_player_ids)
+      end
+    end
+
+    context "ダブルスの場合" do
+      let(:match_format) { "doubles" }
+
+      before do
+        create(:match_player, match:, player: players[0], side: :home)
+        create(:match_player, match:, player: players[1], side: :home)
+        create(:match_player, match:, player: players[2], side: :away)
+        create(:match_player, match:, player: players[3], side: :away)
+      end
+
+      it "最初のプレイヤーを固定し、残りの3人がローテーションすること" do
+        original_player_ids = match.match_players.order(:id).pluck(:player_id)
+
+        match.rotate_match_players
+        rotated_player_ids = match.match_players.order(:id).pluck(:player_id)
+
+        expect(rotated_player_ids[0]).to eq(original_player_ids[0])
+
+        expect(rotated_player_ids[1]).to eq(original_player_ids[3])
+        expect(rotated_player_ids[2]).to eq(original_player_ids[1])
+        expect(rotated_player_ids[3]).to eq(original_player_ids[2])
+
+        match.rotate_match_players
+        second_rotation_player_ids = match.match_players.order(:id).pluck(:player_id)
+
+        expect(second_rotation_player_ids[0]).to eq(original_player_ids[0])
+
+        expect(second_rotation_player_ids[1]).to eq(original_player_ids[2])
+        expect(second_rotation_player_ids[2]).to eq(original_player_ids[3])
+        expect(second_rotation_player_ids[3]).to eq(original_player_ids[1])
+
+        match.rotate_match_players
+        third_rotation_player_ids = match.match_players.order(:id).pluck(:player_id)
+
+        expect(third_rotation_player_ids).to eq(original_player_ids)
+      end
+    end
+  end
 end

@@ -1,7 +1,4 @@
-<div id="match_id_<%= match.id %>" class="match-item bg-white rounded-lg shadow p-4" data-controller="score">
-  <div class="text-center mb-2 bg-indigo-100 py-1 px-2 rounded-md inline-block text-indigo-800 font-medium">
-    <%= match.coat_num == 1 ? "Aコート" : "Bコート" %>
-  </div>
+<div id="match_id_<%= match.id %>" class="match-item bg-white rounded-md border border-gray-200 p-4" data-controller="score">
   <div class="flex items-center justify-between">
     <div class="w-2/5">
       <ul class="space-y-1 text-center">
@@ -9,14 +6,17 @@
           <li class="bg-blue-50 py-2 px-3 rounded-md"><%= player.display_name %></li>
         <% end %>
       </ul>
-      <% unless match.home_score == 0 && match.away_score == 0 %>
-        <div class="mt-2 text-center">
-          <%= link_to match.home_score, show_score_dialog_match_path(match), data: { turbo_stream: true }, class:"text-xl font-bold bg-blue-100 py-1 px-3 rounded-full inline-block min-w-10 cursor-pointer hover:bg-blue-200" %>
-        </div>
-      <% end %>
+      <div class="mt-2 text-center">
+        <span class="text-xl font-bold bg-blue-100 py-1 px-3 rounded-full inline-block min-w-10"><%= match.home_score %></span>
+      </div>
     </div>
     <div class="text-center">
-      <div class="text-xl font-bold text-gray-500">VS</div>
+      <div class="text-xl font-bold text-gray-500 mb-1">VS</div>
+      <% if match.doubles? %>
+        <%= link_to rotate_match_path(match), data: { turbo_method: :post, turbo_stream: true }, class:"text-xs bg-green-600 text-white py-1 px-2 rounded-md inline-block cursor-pointer hover:bg-green-700" do %>
+          ペア交代
+        <% end %>
+      <% end %>
     </div>
     <div class="w-2/5">
       <ul class="space-y-1 text-center">
@@ -24,16 +24,12 @@
           <li class="bg-red-50 py-2 px-3 rounded-md"><%= player.display_name %></li>
         <% end %>
       </ul>
-      <% unless match.home_score == 0 && match.away_score == 0 %>
-        <div class="mt-2 text-center">
-          <%= link_to match.away_score, show_score_dialog_match_path(match), data: { turbo_stream: true }, class:"text-xl font-bold bg-red-100 py-1 px-3 rounded-full inline-block min-w-10 cursor-pointer hover:bg-red-200" %>
-        </div>
-      <% end %>
+      <div class="mt-2 text-center">
+        <span class="text-xl font-bold bg-red-100 py-1 px-3 rounded-full inline-block min-w-10"><%= match.away_score %></span>
+      </div>
     </div>
   </div>
-  <% if match.home_score == 0 && match.away_score == 0 %>
-    <div class="mt-4 text-center">
-      <%= link_to "スコア入力", show_score_dialog_match_path(match), data: { turbo_stream: true }, class:"text-sm bg-indigo-500 text-white py-1 px-4 rounded-md inline-block cursor-pointer hover:bg-indigo-600" %>
-    </div>
-  <% end %>
+  <div class="mt-4 text-center">
+    <%= link_to "スコア入力", show_score_dialog_match_path(match), data: { turbo_stream: true }, class:"text-sm bg-indigo-500 text-white py-1 px-4 rounded-md inline-block cursor-pointer hover:bg-indigo-600" %>
+  </div>
 </div>
