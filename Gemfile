@@ -75,7 +75,6 @@ group :development, :test do
   # カバレッジ計測
   gem "simplecov"
 
-  gem "rails-controller-testing"
 end
 
 group :development do

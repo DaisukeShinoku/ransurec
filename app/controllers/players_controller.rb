@@ -16,13 +16,13 @@ class PlayersController < ApplicationController
         render turbo_stream: [
           turbo_stream.replace(
             "matches_list",
-            partial: "events/event_matches_list", # パーシャルをplayersディレクトリに移動
-            locals: { event: @event, status: @status } # 必要な変数を渡す
+            partial: "events/event_matches_list",
+            locals: { event: @event, status: @status }
           ),
           turbo_stream.replace(
-            "name_edit_dialog", # ダイアログのIDを変更
-            partial: "players/name_edit_dialog", # パーシャルをplayersディレクトリに移動
-            locals: { event: @event, status: @status } # 必要な変数を渡す
+            "name_edit_dialog",
+            partial: "players/name_edit_dialog",
+            locals: { event: @event, status: @status }
           )
         ]
       end
@@ -40,21 +40,21 @@ class PlayersController < ApplicationController
   end
 
   def show_player_name_dialog
-    @event = Event.find(params[:event_id]) # event_idを受け取るように変更
+    @event = Event.find(params[:event_id])
 
-    # displayを切り替える
+  
     @status = "block"
     if params[:status]
-      # statusがある場合はその値を利用する
+    
       @status = params[:status]
     end
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace(
-            "name_edit_dialog", # ダイアログのIDを変更
-            partial: "players/name_edit_dialog", # パーシャルをplayersディレクトリに移動
-            locals: { event: @event, status: @status } # 必要な変数を渡す
+            "name_edit_dialog",
+            partial: "players/name_edit_dialog",
+            locals: { event: @event, status: @status }
           )
         ]
       end
