@@ -83,8 +83,8 @@ RSpec.describe "Players", type: :request do
     let(:event) { create(:event) }
     let(:player) { create(:player, event: event) } # 必要に応じて
 
-    context 'パラメータにevent_idのみがある場合' do
-      it '指定されたイベントを@eventに割り当て、成功のレスポンスを返すこと' do
+    context "パラメータにevent_idのみがある場合" do
+      it "指定されたイベントを@eventに割り当て、成功のレスポンスを返すこと" do
         get show_player_name_dialog_players_path, params: { event_id: event.id, format: :turbo_stream } # ここを修正
 
         expect(response).to have_http_status(:ok)
@@ -92,13 +92,13 @@ RSpec.describe "Players", type: :request do
         expect(assigns(:status)).to eq("block")
         expect(response.media_type).to eq('text/vnd.turbo-stream.html')
         expect(response.body).to include('<turbo-stream action="replace" target="name_edit_dialog">')
-        expect(response).to render_template(partial: 'players/_name_edit_dialog')
+        expect(response).to render_template(partial: "players/_name_edit_dialog")
         expect(response).to render_template(locals: { event: event, status: "block" })
       end
     end
 
-    context 'パラメータにevent_idとstatusがある場合' do
-      it '@statusにパラメータのstatusの値を割り当てること' do
+    context "パラメータにevent_idとstatusがある場合" do
+      it "@statusにパラメータのstatusの値を割り当てること" do
         get show_player_name_dialog_players_path, params: { event_id: event.id, status: "none", format: :turbo_stream } # ここを修正
 
         expect(response).to have_http_status(:ok)
@@ -107,13 +107,11 @@ RSpec.describe "Players", type: :request do
       end
     end
 
-    context '無効なevent_idが渡された場合' do
-      it 'ActiveRecord::RecordNotFoundエラーが発生し、404レスポンスを返すこと' do
+    context "無効なevent_idが渡された場合" do
+      it "ActiveRecord::RecordNotFoundエラーが発生し、404レスポンスを返すこと" do
         expect {
           get show_player_name_dialog_players_path, params: { event_id: 999, format: :turbo_stream } # ここを修正
         }.to raise_error(ActiveRecord::RecordNotFound)
-        # エラーが発生するため、以下のexpectは実行されません
-        # expect(response).to have_http_status(:not_found)
       end
     end
   end

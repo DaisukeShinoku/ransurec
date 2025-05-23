@@ -74,7 +74,6 @@ group :development, :test do
 
   # カバレッジ計測
   gem "simplecov"
-
 end
 
 group :development do

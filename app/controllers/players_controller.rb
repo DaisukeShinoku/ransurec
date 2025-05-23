@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        flash.now[:notice] = I18n.t("player.notices.updated") # flash.now を使用
+        flash.now[:notice] = I18n.t("player.notices.updated")
         render turbo_stream: [
           turbo_stream.replace(
             "matches_list",
@@ -25,7 +25,7 @@ class PlayersController < ApplicationController
             partial: "players/name_edit_dialog",
             locals: { event: @event, status: @status }
           ),
-          turbo_stream.update("flash-messages", partial: "shared/flash_messages") 
+          turbo_stream.update("flash-messages", partial: "shared/flash_messages")
         ]
       end
     end
@@ -44,12 +44,7 @@ class PlayersController < ApplicationController
   def show_player_name_dialog
     @event = Event.find(params[:event_id])
 
-  
-    @status = "block"
-    if params[:status]
-    
-      @status = params[:status]
-    end
+    @status = params[:status] || "block"
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [

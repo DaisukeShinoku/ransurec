@@ -1,8 +1,8 @@
 <% flash.each do |type, msg| %>
   <div class="flash-message <%= type %> bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 text-sm flex items-center"
-       data-controller="flash"           <%# Stimulusコントローラーを紐付け %>
-       data-flash-target="message"       <%# コントローラー内で要素を特定するためのターゲット %>
-       data-flash-timeout-value="5000">  <%# 自動で消えるまでの時間（ミリ秒、例: 5秒） %>
+       data-controller="flash" 
+       data-flash-target="message" 
+       data-flash-timeout-value="5000">
     <%= msg %>
   </div>
 <% end %>
