@@ -13,12 +13,15 @@
     </div>
   <% end %>
 
-  <!-- 選手名編集ダイアログ -->
-  <div data-controller="player-name" class="mb-6 flex space-x-4">
+  <div data-controller="player-name qr-code" class="mb-6 flex space-x-4">
     <button type="button" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm flex items-center" data-action="click->player-name#openDialog">
       選手名編集
     </button>
     <%= render 'players/name_edit_dialog', event: @event %>
+    <button type="button" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm flex items-center" data-action="qr-code#openDialog">
+      QRコード
+    </button>
+    <%= render 'qr_code_dialog' %>
     <%= link_to event_standings_path(@event), class: "bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm flex items-center" do %>
       成績表表示
     <% end %>
