@@ -13,8 +13,9 @@
     <div class="text-center">
       <div class="text-xl font-bold text-gray-500 mb-1">VS</div>
       <% if match.doubles? %>
-        <%= link_to rotate_match_path(match), data: { turbo_method: :post, turbo_stream: true }, class:"text-xs bg-green-600 text-white py-1 px-2 rounded-md inline-block cursor-pointer hover:bg-green-700" do %>
-          ペア交代
+        <%= link_to rotate_match_path(match), data: { turbo_method: :post, turbo_stream: true }, class:"inline-block", title: "ペア交代" do %>
+          <span class="text-4xl leading-none cursor-pointer hover:opacity-80 active:scale-95 transition sm:hidden">🔁</span>
+          <span class="hidden sm:inline text-xs bg-green-600 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-green-700">ペア交代</span>
         <% end %>
       <% end %>
     </div>

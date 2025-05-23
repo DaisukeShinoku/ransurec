@@ -13,13 +13,19 @@
     </div>
   <% end %>
 
-  <!-- 選手名編集ダイアログ -->
-  <div class="mb-6 flex space-x-4">
+
+  <div data-controller="player-name qr-code" class="mb-6 flex space-x-4">
     <%= link_to "選手名編集", show_player_name_dialog_players_path(event_id: @event.id), data: { turbo_stream: true }, class:"bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm flex items-center" %>
     <%= render 'players/name_edit_dialog', event: @event, status: @status %>
+    <button type="button" class="bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm flex items-center" data-action="qr-code#openDialog">
+      QRコード
+    </button>
+    <%= render 'qr_code_dialog' %>
     <%= link_to event_standings_path(@event), class: "bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 text-sm flex items-center" do %>
       成績表表示
     <% end %>
+    <div id="flash-messages" class="text-sm flex items-center">
+    </div>
   </div>
 
   <%= turbo_frame_tag "matches_list" do %>
