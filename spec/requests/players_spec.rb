@@ -78,4 +78,34 @@ RSpec.describe "Players", type: :request do
       end
     end
   end
+
+  describe "GET show_player_name_dialog_players_path" do
+    let(:event) { create(:event) }
+    let!(:player1) { create(:player, event: event, display_name: "Player A") }
+    let!(:player2) { create(:player, event: event, display_name: "Player B") }
+
+    context "event_idパラメータのみがある場合" do
+      it "成功のレスポンスを返すこと" do
+        get show_player_name_dialog_players_path(event_id: event.id), headers: { "Accept": "text/vnd.turbo-stream.html" }
+        expect(response).to have_http_status(:ok)
+        expect(response.media_type).to eq("text/vnd.turbo-stream.html")
+      end
+
+      it "レスポンスボディにTurbo Streamアクションが含まれること" do
+        get show_player_name_dialog_players_path(event_id: event.id), headers: { "Accept": "text/vnd.turbo-stream.html" }
+
+        expect(response.body).to include('<turbo-stream action="replace" target="name_edit_dialog">')
+        expect(response.body).to include('<h3 class="text-lg font-medium text-gray-900 mb-4 sticky top-0 bg-white py-2">選手名を編集</h3>') # 例: パーシャル内のH3タグのテキスト
+        expect(response.body).to include('<form class="space-y-4" data-turbo-stream="true" action="/players/update_all" accept-charset="UTF-8" method="post">') # フォームの開始タグ
+        expect(response.body).to include('value="Player A"')
+        expect(response.body).to include('value="Player B"')
+        expect(response.body).to include('name="commit" value="一括更新"')
+      end
+
+      it "レスポンスボディにstatusがデフォルト値の'block'で反映されていること" do
+        get show_player_name_dialog_players_path(event_id: event.id), headers: { "Accept": "text/vnd.turbo-stream.html" }
+        expect(response.body).to include('style="display: block;"')
+      end
+    end
+  end
 end
