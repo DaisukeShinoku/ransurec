@@ -9,8 +9,13 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
+  # FIXME: /.well-known/appspecific/com.chrome.devtools.json へのリクエストに対応するための暫定措置
+  # Chrome DevToolsが開発モード時にこのJSONファイルを要求するため、エラーログ抑制のために定義しています。
+  # より恒久的な対策や、他の .well-known URI への対応が必要になった場合は、
+  # Rackミドルウェアでの処理などを検討してください。
+  get "/.well-known/appspecific/com.chrome.devtools.json", to: proc { [204, {}, ["\n"]] }
+
   # Defines the root path route ("/")
-  # root "posts#index"
   root "events#new"
   resources :events, only: %i[show new create] do
     resource :standings, only: %i[show]
