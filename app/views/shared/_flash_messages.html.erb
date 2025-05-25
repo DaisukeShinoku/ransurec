@@ -1,0 +1,8 @@
+<% flash.each do |type, msg| %>
+  <div class="flash-message <%= type %> bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 text-sm flex items-center"
+       data-controller="flash" 
+       data-flash-target="message" 
+       data-flash-timeout-value="5000">
+    <%= msg %>
+  </div>
+<% end %>

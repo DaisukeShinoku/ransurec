@@ -1,0 +1,22 @@
+<div id="matches_list" class="space-y-10">
+  <% event.matches_grouped_by_sequence.each do |sequence_num, matches| %>
+    <div class="match-group bg-white rounded-lg border border-gray-200 overflow-hidden">
+      <div class="bg-gray-100 py-2 px-4 border-b border-gray-200">
+        <h2 class="text-sm font-medium text-gray-700"><%= sequence_num %></h2>
+      </div>
+        <div class="p-4">
+          <% matches.each_with_index do |match, index| %>
+            <div class="<%= index > 0 ? 'mt-6' : '' %>">
+              <%= turbo_frame_tag "match_id_#{match.id}" do %>
+                <%= render 'matches/match_detail', match: match %>
+              <% end %>
+              <!-- スコア入力ダイアログ（初期状態は非表示） -->
+              <%= turbo_frame_tag "dialog_match_id_#{match.id}" do %>
+                <%= render 'matches/score_dialog', match: match, status: @status %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  <% end %>
+</div>
