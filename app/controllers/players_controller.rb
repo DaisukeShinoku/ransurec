@@ -12,22 +12,7 @@ class PlayersController < ApplicationController
     end
 
     respond_to do |format|
-      format.turbo_stream do
-        flash.now[:notice] = I18n.t("player.notices.updated")
-        render turbo_stream: [
-          turbo_stream.replace(
-            "matches_list",
-            partial: "events/event_matches_list",
-            locals: { event: @event, status: @status }
-          ),
-          turbo_stream.replace(
-            "name_edit_dialog",
-            partial: "players/name_edit_dialog",
-            locals: { event: @event, status: @status }
-          ),
-          turbo_stream.update("flash-messages", partial: "shared/flash_messages")
-        ]
-      end
+      format.turbo_stream { render_update_all_success_turbo_stream }
     end
   rescue StandardError
     respond_to do |format|
@@ -56,5 +41,24 @@ class PlayersController < ApplicationController
         ]
       end
     end
+  end
+
+  private
+
+  def render_update_all_success_turbo_stream
+    flash.now[:notice] = I18n.t("player.notices.updated")
+    render turbo_stream: [
+      turbo_stream.replace(
+        "matches_list",
+        partial: "events/event_matches_list",
+        locals: { event: @event, status: @status }
+      ),
+      turbo_stream.replace(
+        "name_edit_dialog",
+        partial: "players/name_edit_dialog",
+        locals: { event: @event, status: @status }
+      ),
+      turbo_stream.update("flash-messages", partial: "shared/flash_messages")
+    ]
   end
 end
