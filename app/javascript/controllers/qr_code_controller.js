@@ -4,10 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["dialog"]
 
-  connect() {
-    console.log("QR Code controller connected")
-  }
-
   openDialog(event) {
     event.preventDefault()
     this.dialogTarget.style.display = "flex"
