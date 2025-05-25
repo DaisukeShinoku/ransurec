@@ -1,8 +1,18 @@
 <% flash.each do |type, msg| %>
-  <div class="flash-message <%= type %> bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 text-sm flex items-center"
-       data-controller="flash" 
-       data-flash-target="message" 
-       data-flash-timeout-value="5000">
-    <%= msg %>
+  <% type_class = case type.to_s
+                 when 'notice'
+                   'bg-green-100 text-green-700'
+                 when 'alert'
+                   'bg-red-100 text-red-700'
+                 else
+                   'bg-gray-100 text-gray-700' # デフォルトのスタイル
+                 end %>
+  <div class="flash-message fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 <%= type_class %>"
+       data-controller="flash"
+       data-flash-target="message">
+    <span><%= msg %></span>
+    <button type="button" class="ml-2 text-gray-500 hover:text-gray-700" data-action="flash#hide">
+      &times;
+    </button>
   </div>
 <% end %>
