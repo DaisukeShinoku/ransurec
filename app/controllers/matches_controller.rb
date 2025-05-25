@@ -5,50 +5,10 @@ class MatchesController < ApplicationController
     if @match.update(match_params)
       @status = "none"
       flash[:notice] = I18n.t("match.notices.updated")
-      respond_to do |format|
-        format.html { redirect_to event_path(@match.event), notice: flash[:notice] }
-        format.json { render json: { status: :ok, match: @match, notice: flash[:notice] } }
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.replace(
-              "dialog_match_id_#{@match.id}",
-              partial: "matches/score_dialog",
-              locals: { match: @match, status: @status }
-            ),
-            turbo_stream.replace(
-              "match_id_#{@match.id}",
-              partial: "matches/match_detail",
-              locals: { match: @match }
-            ),
-            turbo_stream.replace(
-              "flash-messages",
-              partial: "shared/flash_messages"
-            )
-          ]
-        end
-      end
+      render_update_success_response
     else
       flash[:alert] = I18n.t("match.alerts.update_failed")
-      respond_to do |format|
-        format.html { redirect_to event_path(@match.event), alert: flash[:alert] }
-        format.json do
-          render json: { status: :unprocessable_entity, errors: @match.errors.full_messages,
-                         alert: flash[:alert] }, status: :unprocessable_entity
-        end
-        format.turbo_stream do
-          render turbo_stream: [
-            turbo_stream.replace(
-              "dialog_match_id_#{@match.id}",
-              partial: "matches/score_dialog",
-              locals: { match: @match, status: "block" }
-            ),
-            turbo_stream.replace(
-              "flash-messages",
-              partial: "shared/flash_messages"
-            )
-          ]
-        end
-      end
+      render_update_failure_response
     end
   end
 
@@ -100,5 +60,53 @@ class MatchesController < ApplicationController
 
   def match_params
     params.expect(match: %i[home_score away_score])
+  end
+
+  def render_update_success_response
+    respond_to do |format|
+      format.html { redirect_to event_path(@match.event), notice: flash[:notice] }
+      format.json { render json: { status: :ok, match: @match, notice: flash[:notice] } }
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace(
+            "dialog_match_id_#{@match.id}",
+            partial: "matches/score_dialog",
+            locals: { match: @match, status: @status }
+          ),
+          turbo_stream.replace(
+            "match_id_#{@match.id}",
+            partial: "matches/match_detail",
+            locals: { match: @match }
+          ),
+          turbo_stream.replace(
+            "flash-messages",
+            partial: "shared/flash_messages"
+          )
+        ]
+      end
+    end
+  end
+
+  def render_update_failure_response
+    respond_to do |format|
+      format.html { redirect_to event_path(@match.event), alert: flash[:alert] }
+      format.json do
+        render json: { status: :unprocessable_entity, errors: @match.errors.full_messages,
+                       alert: flash[:alert] }, status: :unprocessable_entity
+      end
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace(
+            "dialog_match_id_#{@match.id}",
+            partial: "matches/score_dialog",
+            locals: { match: @match, status: "block" }
+          ),
+          turbo_stream.replace(
+            "flash-messages",
+            partial: "shared/flash_messages"
+          )
+        ]
+      end
+    end
   end
 end
