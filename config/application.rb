@@ -21,7 +21,12 @@ module Ransurec
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    # Set default locale to Japanese
+    config.i18n.default_locale = :ja
+    config.i18n.available_locales = [:ja, :en]
+    
+    # Set time zone to Japan
+    config.time_zone = "Asia/Tokyo"
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
