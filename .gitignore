@@ -33,3 +33,5 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+# Ignore RSpec example status persistence file.
+/spec/examples.txt
