@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :match_player do
+  factory :game_player do
     side { rand(1..2) }
   end
 end
