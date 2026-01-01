@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      player: 選手
+    attributes:
+      player:
+        meetup: ミートアップ
+        display_name: 表示名

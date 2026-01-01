@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      meetup: ミートアップ
+    attributes:
+      meetup:
+        name: ミートアップ名
+        game_format: 試合形式
+        number_of_coats: コート数

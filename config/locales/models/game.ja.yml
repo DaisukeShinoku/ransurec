@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      game: 試合
+    attributes:
+      game:
+        meetup: ミートアップ
+        coat_num: 実施コート
+        sequence_num: 試合順
+        game_format: 試合形式
+        home_score: ホーム側のスコア
+        away_score: アウェイ側のスコア
