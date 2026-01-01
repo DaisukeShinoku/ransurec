@@ -1,0 +1,61 @@
+# コート1面、プレイヤー6人
+sequence1:
+  coat1:
+    home: [1]
+    away: [2]
+sequence2:
+  coat1:
+    home: [3]
+    away: [4]
+sequence3:
+  coat1:
+    home: [5]
+    away: [6]
+sequence4:
+  coat1:
+    home: [1]
+    away: [3]
+sequence5:
+  coat1:
+    home: [2]
+    away: [4]
+sequence6:
+  coat1:
+    home: [5]
+    away: [1]
+sequence7:
+  coat1:
+    home: [6]
+    away: [3]
+sequence8:
+  coat1:
+    home: [2]
+    away: [5]
+sequence9:
+  coat1:
+    home: [4]
+    away: [6]
+sequence10:
+  coat1:
+    home: [3]
+    away: [2]
+sequence11:
+  coat1:
+    home: [1]
+    away: [4]
+sequence12:
+  coat1:
+    home: [5]
+    away: [3]
+sequence13:
+  coat1:
+    home: [6]
+    away: [2]
+sequence14:
+  coat1:
+    home: [4]
+    away: [5]
+sequence15:
+  coat1:
+    home: [1]
+    away: [6]

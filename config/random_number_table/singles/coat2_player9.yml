@@ -1,0 +1,128 @@
+# コート2面、プレイヤー9人
+sequence1:
+  coat1:
+    home: [1]
+    away: [2]
+  coat2:
+    home: [3]
+    away: [4]
+sequence2:
+  coat1:
+    home: [5]
+    away: [6]
+  coat2:
+    home: [7]
+    away: [8]
+sequence3:
+  coat1:
+    home: [9]
+    away: [1]
+  coat2:
+    home: [2]
+    away: [3]
+sequence4:
+  coat1:
+    home: [4]
+    away: [5]
+  coat2:
+    home: [6]
+    away: [7]
+sequence5:
+  coat1:
+    home: [8]
+    away: [9]
+  coat2:
+    home: [1]
+    away: [3]
+sequence6:
+  coat1:
+    home: [2]
+    away: [4]
+  coat2:
+    home: [5]
+    away: [7]
+sequence7:
+  coat1:
+    home: [6]
+    away: [8]
+  coat2:
+    home: [9]
+    away: [3]
+sequence8:
+  coat1:
+    home: [1]
+    away: [4]
+  coat2:
+    home: [2]
+    away: [5]
+sequence9:
+  coat1:
+    home: [7]
+    away: [9]
+  coat2:
+    home: [6]
+    away: [3]
+sequence10:
+  coat1:
+    home: [8]
+    away: [1]
+  coat2:
+    home: [2]
+    away: [6]
+sequence11:
+  coat1:
+    home: [4]
+    away: [7]
+  coat2:
+    home: [5]
+    away: [9]
+sequence12:
+  coat1:
+    home: [8]
+    away: [3]
+  coat2:
+    home: [1]
+    away: [6]
+sequence13:
+  coat1:
+    home: [2]
+    away: [7]
+  coat2:
+    home: [4]
+    away: [9]
+sequence14:
+  coat1:
+    home: [5]
+    away: [8]
+  coat2:
+    home: [1]
+    away: [7]
+sequence15:
+  coat1:
+    home: [6]
+    away: [4]
+  coat2:
+    home: [2]
+    away: [9]
+sequence16:
+  coat1:
+    home: [3]
+    away: [5]
+  coat2:
+    home: [8]
+    away: [2]
+sequence17:
+  coat1:
+    home: [6]
+    away: [9]
+  coat2:
+    home: [1]
+    away: [5]
+sequence18:
+  coat1:
+    home: [7]
+    away: [3]
+  coat2:
+    home: [4]
+    away: [8]
+

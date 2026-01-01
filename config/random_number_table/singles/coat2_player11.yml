@@ -1,0 +1,197 @@
+# コート2面、プレイヤー11人
+sequence1:
+  coat1:
+    home: [1]
+    away: [2]
+  coat2:
+    home: [3]
+    away: [4]
+sequence2:
+  coat1:
+    home: [5]
+    away: [6]
+  coat2:
+    home: [7]
+    away: [8]
+sequence3:
+  coat1:
+    home: [9]
+    away: [10]
+  coat2:
+    home: [11]
+    away: [1]
+sequence4:
+  coat1:
+    home: [2]
+    away: [3]
+  coat2:
+    home: [4]
+    away: [5]
+sequence5:
+  coat1:
+    home: [6]
+    away: [7]
+  coat2:
+    home: [8]
+    away: [9]
+sequence6:
+  coat1:
+    home: [10]
+    away: [11]
+  coat2:
+    home: [1]
+    away: [3]
+sequence7:
+  coat1:
+    home: [2]
+    away: [4]
+  coat2:
+    home: [5]
+    away: [7]
+sequence8:
+  coat1:
+    home: [6]
+    away: [8]
+  coat2:
+    home: [9]
+    away: [11]
+sequence9:
+  coat1:
+    home: [10]
+    away: [1]
+  coat2:
+    home: [3]
+    away: [5]
+sequence10:
+  coat1:
+    home: [2]
+    away: [7]
+  coat2:
+    home: [4]
+    away: [6]
+  sequence11:
+    coat1:
+      home: [8]
+      away: [11]
+    coat2:
+      home: [9]
+      away: [1]
+  sequence12:
+    coat1:
+      home: [10]
+      away: [3]
+    coat2:
+      home: [5]
+      away: [2]
+  sequence13:
+    coat1:
+      home: [4]
+      away: [7]
+    coat2:
+      home: [6]
+      away: [9]
+  sequence14:
+    coat1:
+      home: [8]
+      away: [10]
+    coat2:
+      home: [11]
+      away: [2]
+  sequence15:
+    coat1:
+      home: [1]
+      away: [5]
+    coat2:
+      home: [3]
+      away: [6]
+  sequence16:
+    coat1:
+      home: [4]
+      away: [9]
+    coat2:
+      home: [7]
+      away: [10]
+  sequence17:
+    coat1:
+      home: [8]
+      away: [2]
+    coat2:
+      home: [11]
+      away: [3]
+  sequence18:
+    coat1:
+      home: [1]
+      away: [6]
+    coat2:
+      home: [5]
+      away: [9]
+  sequence19:
+    coat1:
+      home: [4]
+      away: [10]
+    coat2:
+      home: [7]
+      away: [11]
+  sequence20:
+    coat1:
+      home: [8]
+      away: [3]
+    coat2:
+      home: [2]
+      away: [6]
+  sequence21:
+    coat1:
+      home: [1]
+      away: [4]
+    coat2:
+      home: [5]
+      away: [10]
+  sequence22:
+    coat1:
+      home: [9]
+      away: [7]
+    coat2:
+      home: [11]
+      away: [6]
+  sequence23:
+    coat1:
+      home: [8]
+      away: [1]
+    coat2:
+      home: [2]
+      away: [10]
+  sequence24:
+    coat1:
+      home: [3]
+      away: [7]
+    coat2:
+      home: [4]
+      away: [11]
+  sequence25:
+    coat1:
+      home: [5]
+      away: [8]
+    coat2:
+      home: [9]
+      away: [2]
+  sequence26:
+    coat1:
+      home: [6]
+      away: [10]
+    coat2:
+      home: [1]
+      away: [7]
+  sequence27:
+    coat1:
+      home: [3]
+      away: [9]
+    coat2:
+      home: [4]
+      away: [8]
+  sequence28:
+    coat1:
+      home: [11]
+      away: [5]
+    coat2:
+      home: [2]
+      away: [1]
