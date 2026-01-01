@@ -1,7 +1,7 @@
 class CreateMatches < ActiveRecord::Migration[8.1]
   def change
     create_table :matches, comment: "試合" do |t|
-      t.references :event, null: false, foreign_key: true, comment: "イベント"
+      t.references :meetup, null: false, foreign_key: true, comment: "ミートアップ"
       t.integer :coat_num, null: false, default: 1, comment: "実施コート"
       t.integer :sequence_num, null: false, default: 1, comment: "試合順"
       t.integer :match_format, null: false, default: 1, comment: "試合形式"
