@@ -15,16 +15,28 @@ class Game < ApplicationRecord
       number_of_players = meetup.players.size
 
       key = "coat#{number_of_coats}_player#{number_of_players}"
-      file_path = "config/random_number_table/#{game_format}/#{key}.yml"
-      random_number_table = YAML.load_file(file_path)
+      file_path = Rails.root.join("config/random_number_table/#{game_format}/#{key}.csv")
+      sequence_count = count_sequences(file_path)
 
-      random_number_table.each_with_index do |_, sequence_num|
+      sequence_count.times do |sequence_num|
         number_of_coats.times do |coat_num|
           games << { meetup_id: meetup.id, coat_num: coat_num + 1, sequence_num: sequence_num + 1, game_format: }
         end
       end
 
       Game.insert_all!(games) # rubocop:disable Rails/SkipsModelValidations
+    end
+
+    private
+
+    def count_sequences(file_path)
+      require "csv"
+
+      sequences = Set.new
+      CSV.foreach(file_path, headers: true) do |row|
+        sequences.add(row["sequence_num"].to_i)
+      end
+      sequences.size
     end
   end
 end

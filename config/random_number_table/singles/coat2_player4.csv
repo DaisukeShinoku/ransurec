@@ -1,0 +1,13 @@
+sequence_num,coat_num,side,player_nums
+1,1,home,1
+1,1,away,2
+1,2,home,3
+1,2,away,4
+2,1,home,1
+2,1,away,3
+2,2,home,2
+2,2,away,4
+3,1,home,1
+3,1,away,4
+3,2,home,2
+3,2,away,3

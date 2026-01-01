@@ -15,8 +15,8 @@ class GamePlayer < ApplicationRecord
       number_of_players = all_players.size
 
       key = "coat#{number_of_coats}_player#{number_of_players}"
-      file_path = "config/random_number_table/#{game_format}/#{key}.yml"
-      random_number_table = YAML.load_file(file_path)
+      file_path = Rails.root.join("config/random_number_table/#{game_format}/#{key}.csv")
+      random_number_table = load_csv_table(file_path)
 
       coat_side_array = %w[home away]
 
@@ -31,6 +31,32 @@ class GamePlayer < ApplicationRecord
       end
 
       GamePlayer.insert_all!(game_players) # rubocop:disable Rails/SkipsModelValidations
+    end
+
+    private
+
+    def load_csv_table(file_path)
+      require "csv"
+
+      table = {}
+      CSV.foreach(file_path, headers: true) do |row|
+        sequence_num = row["sequence_num"].to_i
+        coat_num = row["coat_num"].to_i
+        side = row["side"]
+        player_nums = parse_player_nums(row["player_nums"])
+
+        table["sequence#{sequence_num}"] ||= {}
+        table["sequence#{sequence_num}"]["coat#{coat_num}"] ||= {}
+        table["sequence#{sequence_num}"]["coat#{coat_num}"][side] = player_nums
+      end
+
+      table
+    end
+
+    def parse_player_nums(player_nums_string)
+      return [] if player_nums_string.nil? || player_nums_string.strip.empty?
+
+      player_nums_string.to_s.split(",").map { |s| s.strip.to_i }
     end
   end
 end

@@ -1,5 +1,0 @@
-# コート1面、プレイヤー2人
-sequence1:
-  coat1:
-    home: [1]
-    away: [2]
